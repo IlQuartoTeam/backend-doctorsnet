@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Models\Doctor;
 
 
 class AuthController extends Controller
@@ -63,7 +64,9 @@ class AuthController extends Controller
 
     public function me(Request $request)
     {
-        return $request->user();
+        $userID = $request->user()->id;
+        $loggedDoctor = Doctor::with('reviews', 'specializations', 'subscriptions', 'messages', 'experiences')->where('user_id', $userID)->first();
+        return $loggedDoctor;
     }
 
 
