@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('subscription_id')->references('id')->on('subscriptions');
-            $table->foreign('doctor_id')->references('id')->on('doctors_profile');
+            $table->foreign('doctor_id')->references('id')->on('doctors');
         });
     }
 
