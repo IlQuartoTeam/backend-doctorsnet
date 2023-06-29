@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('doctors_specializations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->bigInteger('doctor_id');
+            $table->bigInteger('specialization_id');
+
+            $table->foreign('doctor_id')->references('id')->on('doctors_profile');
+            $table->foreign('specialization_id')->references('id')->on('specializations');
         });
     }
 
