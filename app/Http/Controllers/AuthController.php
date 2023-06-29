@@ -18,12 +18,12 @@ class AuthController extends Controller
     public function register(RegisterUserRequest $request)
     {
 
-
+        $randId = rand(1, 300);
 
         $user = User::create([
             'name' => $request->validated('name'),
             'surname' => $request->validated('surname'),
-            'slug' => Str::slug($request->validated('name') + $request->validated('surname'), '-'),
+            'slug' => Str::slug($request->validated('name') . '-' . $request->validated('surname') . '-' . $randId),
             'email' => $request->validated('email'),
             'password' => Hash::make($request->validated('password')),
         ]);
