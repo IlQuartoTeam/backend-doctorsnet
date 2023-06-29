@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('doctors_subscriptions', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('subscirption_id');
+            $table->bigInteger('doctor_id');
+            $table->date('end_date');
             $table->timestamps();
+
+            $table->foreign('subscription_id')->references('id')->on('subscriptions');
+            $table->foreign('doctor_id')->references('id')->on('doctors_profile');
         });
     }
 
