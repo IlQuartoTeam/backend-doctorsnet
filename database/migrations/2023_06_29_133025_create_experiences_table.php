@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('doctor_id')->constrained();
+            $table->string('name', 200);
+            $table->string('type', 50);
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
         });
     }
 

@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('doctor_id')->constrained();
+            $table->text('text');
+            $table->string('email');
+            $table->string('fullname', 200);
+            $table->string('ip', 15);
+            $table->date('prefered_date');
         });
     }
 
