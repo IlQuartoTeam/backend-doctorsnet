@@ -10,6 +10,6 @@ class Review extends Model
     use HasFactory;
 
     public function doctor(){
-        $this->belongsTo(Doctor::class);
+    return $this->belongsTo(Doctor::class);
     }
 }
