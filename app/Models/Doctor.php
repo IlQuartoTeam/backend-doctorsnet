@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Experience;
+use App\Models\Message;
+use App\Models\Review;
+use App\Models\Subscription;
+use App\Models\Specialization;
 
 class Doctor extends Model
 {
@@ -14,14 +19,22 @@ class Doctor extends Model
     }
 
     public function experiences(){
-        $this->belongsToMany(Experience::class);
+        $this->hasMany(Experience::class);
     }
 
     public function messages(){
-        $this->belongsToMany(Message::class);
+        $this->hasMany(Message::class);
     }
 
     public function reviews(){
-        $this->belongsToMany(Review::class);
+        $this->hasMany(Review::class);
+    }
+
+    public function subscription(){
+        $this->belongsToMany(Subscription::class);
+    }
+
+    public function specializations(){
+        $this->belongsToMany(Specialization::class);
     }
 }
