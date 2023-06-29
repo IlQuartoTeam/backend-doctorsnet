@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('doctors_id');
+            $table->foreign('doctors_id')->references('id')->on('doctors');
+            $table->string('email')->nullable();
+            $table->string('name')->nullable();
+            $table->tinyInteger('rating')->unsigned();
+            $table->text('text');
             $table->timestamps();
         });
     }
