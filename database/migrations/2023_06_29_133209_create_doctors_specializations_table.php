@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigInteger('doctor_id');
             $table->bigInteger('specialization_id');
 
-            $table->foreign('doctor_id')->references('id')->on('doctors_profile');
+            $table->foreign('doctor_id')->references('id')->on('doctors');
             $table->foreign('specialization_id')->references('id')->on('specializations');
         });
     }
