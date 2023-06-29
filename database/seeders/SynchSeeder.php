@@ -14,11 +14,11 @@ class SynchSeeder extends Seeder
     public function run(): void
     {
 
-        for ($i = 1; $i < 5; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             $doctor = Doctor::where('id', $i)->first();
-        //    $doctor->subscriptions()->attach('1');
-        dd($doctor->review());
+            $doctor->subscriptions()->attach(rand(1,3));
             $doctor->specializations()->attach(rand(1,25));
+
         }
     }
 }

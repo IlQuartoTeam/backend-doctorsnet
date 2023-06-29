@@ -15,26 +15,26 @@ class Doctor extends Model
     use HasFactory;
 
     public function user(){
-        return $this->belongsTo(User::class);
+    return $this->belongsTo(User::class);
     }
 
     public function experiences(){
-        $this->hasMany(Experience::class);
+    return $this->hasMany(Experience::class);
     }
 
     public function messages(){
-        $this->hasMany(Message::class);
+    return $this->hasMany(Message::class);
     }
 
     public function reviews(){
-        $this->hasMany(Review::class);
+    return $this->hasMany(Review::class);
     }
 
-    public function subscription(){
-        $this->belongsToMany(Subscription::class);
+    public function subscriptions(){
+    return $this->belongsToMany(Subscription::class);
     }
 
     public function specializations(){
-        $this->belongsToMany(Specialization::class);
+    return $this->belongsToMany(Specialization::class);
     }
 }
