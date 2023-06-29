@@ -66,7 +66,11 @@ class AuthController extends Controller
     {
         $userID = $request->user()->id;
         $loggedDoctor = Doctor::with('reviews', 'specializations', 'subscriptions', 'messages', 'experiences')->where('user_id', $userID)->first();
-        return $loggedDoctor;
+        return $data = [
+            'doctor' => $loggedDoctor,
+            'user' => $request->user(),
+        ];
+
     }
 
 
