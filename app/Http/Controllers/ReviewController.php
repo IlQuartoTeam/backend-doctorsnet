@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Review;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
+use App\Models\Doctor;
 
 class ReviewController extends Controller
 {
@@ -27,9 +28,9 @@ class ReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreReviewRequest $request)
+    public function store(StoreReviewRequest $request, Doctor $doctor)
     {
-        //
+        dd($doctor);
     }
 
     /**
