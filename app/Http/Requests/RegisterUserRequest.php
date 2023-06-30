@@ -31,7 +31,8 @@ class RegisterUserRequest extends FormRequest
             'password' => 'required|string|min:8',
             'address' => 'required',
             'city' => 'required' ,
-            'specialization' => 'required',
+            'specialization' => 'required|exists:specializations,id',
+            'phone' => 'digits_between:9,11|nullable',
 
         ];
     }
@@ -46,7 +47,13 @@ class RegisterUserRequest extends FormRequest
             'email.unique' => "Email già presente nei nostri sistemi",
             'email.email' => "Inserisci una mail valida",
             'password.required' => "La password è richiesta",
-            'password.min' => "La password deve essere di :min caratteri"
+            'password.min' => "La password deve essere di :min caratteri",
+            'specialization.required' => 'La specializzazione è obbligatoria',
+            'city.required' => 'La città è obbligatoria',
+            'address.required' => "L'indirizzo è obbligatorio",
+            'specialization.exists' => 'Specializzazione non presente',
+            'phone.digits_between' => "Il numero di telefono non ha un formato corretto"
+
 
         ];
     }

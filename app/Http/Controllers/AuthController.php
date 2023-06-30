@@ -33,6 +33,9 @@ class AuthController extends Controller
        $doctor->user_id = $user->id;
        $doctor->address = $request->validated('address');
        $doctor->city = $request->validated('city');
+       if ($request->validated('phone')) {
+        $doctor->phone = $request->validated('phone');
+       }
        $doctor->save();
        $doctor->specializations()->attach($request->validated('specialization'));
 
