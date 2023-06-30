@@ -30,8 +30,22 @@ class ReviewController extends Controller
      */
     public function store(StoreReviewRequest $request, Doctor $doctor)
     {
-        dd($doctor);
+        $review = new Review();
+        $review->doctor_id = $doctor->id;
+        $review->email = $request->validated('email');
+        $review->name = $request->validated('name');
+        $review->rating = $request->validated('rating');
+        $review->text = $request->validated('text');
+        $review->save();
+
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Review added'
+            ]
+        );
     }
+
 
     /**
      * Display the specified resource.
