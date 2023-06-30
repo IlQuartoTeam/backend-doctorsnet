@@ -6,6 +6,8 @@ use App\Models\Doctor;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Review;
 
 
 class DoctorController extends Controller
@@ -15,7 +17,38 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        $allratings = [];
+
+        $doctors = Doctor::latest()->with('specializations')->paginate(10);
+        $doctors->makeHidden(['user_id', 'created_at', 'updated_at']); //escludi campi
+        foreach ($doctors as $doctor) { //sposta campi da user a doctor e aggiungi rating medio
+            $user = User::where('id', $doctor->user_id)->first();
+            $doctor->name = $user->name;
+            $doctor->surname = $user->surname;
+            $doctor->slug = $user->slug;
+
+            $reviews = Review::where('doctor_id', $doctor->id)->get();
+            foreach ($reviews as $review) {//prendo i voti e li metto in un array
+                array_push($allratings, $review->rating);
+            }
+            //calcolo media
+            if (count($allratings) > 0 ) {
+            $sum = array_sum($allratings);
+            $count = count($allratings);
+
+            $average = $sum / $count;
+            $doctor->average_rating = round($average, 1);
+            }
+
+            $allratings = [];//svuoto array per il prox dottore
+        }
+
+        return response()->json(
+            [
+                'success' => true,
+                'results' => $doctors
+            ]
+        );
     }
 
     /**
