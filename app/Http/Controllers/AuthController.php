@@ -33,6 +33,8 @@ class AuthController extends Controller
        $doctor->user_id = $user->id;
        $doctor->address = $request->validated('address');
        $doctor->city = $request->validated('city');
+       $doctor->address_lat = $request->validated('lat');
+       $doctor->address_long = $request->validated('long');
        if ($request->validated('phone')) {
         $doctor->phone = $request->validated('phone');
        }

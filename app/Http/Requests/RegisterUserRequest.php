@@ -33,6 +33,8 @@ class RegisterUserRequest extends FormRequest
             'city' => 'required' ,
             'specialization' => 'required|exists:specializations,id',
             'phone' => 'digits_between:9,11|nullable',
+            'lat' => 'required',
+            'long' => 'required'
 
         ];
     }
