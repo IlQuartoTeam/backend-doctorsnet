@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Experiences;
-use App\Http\Requests\StoreExperiencesRequest;
-use App\Http\Requests\UpdateExperiencesRequest;
+use App\Models\Specialization;
+use App\Http\Requests\StoreSpecializationRequest;
+use App\Http\Requests\UpdateSpecializationRequest;
 
-class ExperiencesController extends Controller
+class SpecializationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class ExperiencesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreExperiencesRequest $request)
+    public function store(StoreSpecializationRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class ExperiencesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Experiences $experiences)
+    public function show(Specialization $Specialization)
     {
         //
     }
@@ -43,7 +43,7 @@ class ExperiencesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Experiences $experiences)
+    public function edit(Specialization $Specialization)
     {
         //
     }
@@ -51,7 +51,7 @@ class ExperiencesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateExperiencesRequest $request, Experiences $experiences)
+    public function update(UpdateSpecializationRequest $request, Specialization $Specialization)
     {
         //
     }
@@ -59,7 +59,7 @@ class ExperiencesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Experiences $experiences)
+    public function destroy(Specialization $Specialization)
     {
         //
     }

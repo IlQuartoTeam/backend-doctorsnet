@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reviews;
-use App\Http\Requests\StoreReviewsRequest;
-use App\Http\Requests\UpdateReviewsRequest;
+use App\Models\Doctor;
+use App\Http\Requests\StoreDoctorRequest;
+use App\Http\Requests\UpdateDoctorRequest;
 
-class ReviewsController extends Controller
+class DoctorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class ReviewsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreReviewsRequest $request)
+    public function store(StoreDoctorRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class ReviewsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Reviews $reviews)
+    public function show(Doctor $Doctor)
     {
         //
     }
@@ -43,7 +43,7 @@ class ReviewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Reviews $reviews)
+    public function edit(Doctor $Doctor)
     {
         //
     }
@@ -51,7 +51,7 @@ class ReviewsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateReviewsRequest $request, Reviews $reviews)
+    public function update(UpdateDoctorRequest $request, Doctor $Doctor)
     {
         //
     }
@@ -59,7 +59,7 @@ class ReviewsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Reviews $reviews)
+    public function destroy(Doctor $Doctor)
     {
         //
     }

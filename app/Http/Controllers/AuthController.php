@@ -20,7 +20,7 @@ class AuthController extends Controller
     {
 
         $randId = rand(1, 300);
-
+//creazione user
         $user = User::create([
             'name' => $request->validated('name'),
             'surname' => $request->validated('surname'),
@@ -28,6 +28,15 @@ class AuthController extends Controller
             'email' => $request->validated('email'),
             'password' => Hash::make($request->validated('password')),
         ]);
+//creazione Doctor e assegnazione dati della registrazione
+       $doctor = new Doctor();
+       $doctor->user_id = $user->id;
+       $doctor->address = $request->validated('address');
+       $doctor->city = $request->validated('city');
+       $doctor->save();
+       $doctor->specializations()->attach($request->validated('specialization'));
+
+
 
         $token = $user->createToken('auth_token')->plainTextToken;
 

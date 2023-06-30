@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Doctors;
-use App\Http\Requests\StoreDoctorsRequest;
-use App\Http\Requests\UpdateDoctorsRequest;
+use App\Models\Subscription;
+use App\Http\Requests\StoreSubscriptionRequest;
+use App\Http\Requests\UpdateSubscriptionRequest;
 
-class DoctorsController extends Controller
+class SubscriptionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class DoctorsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDoctorsRequest $request)
+    public function store(StoreSubscriptionRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class DoctorsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Doctors $doctors)
+    public function show(Subscription $Subscription)
     {
         //
     }
@@ -43,7 +43,7 @@ class DoctorsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Doctors $doctors)
+    public function edit(Subscription $Subscription)
     {
         //
     }
@@ -51,7 +51,7 @@ class DoctorsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDoctorsRequest $request, Doctors $doctors)
+    public function update(UpdateSubscriptionRequest $request, Subscription $Subscription)
     {
         //
     }
@@ -59,7 +59,7 @@ class DoctorsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Doctors $doctors)
+    public function destroy(Subscription $Subscription)
     {
         //
     }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Specializations;
-use App\Http\Requests\StoreSpecializationsRequest;
-use App\Http\Requests\UpdateSpecializationsRequest;
+use App\Models\Message;
+use App\Http\Requests\StoreMessageRequest;
+use App\Http\Requests\UpdateMessageRequest;
 
-class SpecializationsController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class SpecializationsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSpecializationsRequest $request)
+    public function store(StoreMessageRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class SpecializationsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Specializations $specializations)
+    public function show(Message $Message)
     {
         //
     }
@@ -43,7 +43,7 @@ class SpecializationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Specializations $specializations)
+    public function edit(Message $Message)
     {
         //
     }
@@ -51,7 +51,7 @@ class SpecializationsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSpecializationsRequest $request, Specializations $specializations)
+    public function update(UpdateMessageRequest $request, Message $Message)
     {
         //
     }
@@ -59,7 +59,7 @@ class SpecializationsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Specializations $specializations)
+    public function destroy(Message $Message)
     {
         //
     }

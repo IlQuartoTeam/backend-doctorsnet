@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subscriptions;
-use App\Http\Requests\StoreSubscriptionsRequest;
-use App\Http\Requests\UpdateSubscriptionsRequest;
+use App\Models\Review;
+use App\Http\Requests\StoreReviewRequest;
+use App\Http\Requests\UpdateReviewRequest;
 
-class SubscriptionsController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class SubscriptionsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSubscriptionsRequest $request)
+    public function store(StoreReviewRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class SubscriptionsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Subscriptions $subscriptions)
+    public function show(Review $Review)
     {
         //
     }
@@ -43,7 +43,7 @@ class SubscriptionsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Subscriptions $subscriptions)
+    public function edit(Review $Review)
     {
         //
     }
@@ -51,7 +51,7 @@ class SubscriptionsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSubscriptionsRequest $request, Subscriptions $subscriptions)
+    public function update(UpdateReviewRequest $request, Review $Review)
     {
         //
     }
@@ -59,7 +59,7 @@ class SubscriptionsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Subscriptions $subscriptions)
+    public function destroy(Review $Review)
     {
         //
     }
