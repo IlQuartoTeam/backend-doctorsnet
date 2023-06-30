@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Review;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
+use App\Models\Doctor;
 
 class ReviewController extends Controller
 {
@@ -27,10 +28,24 @@ class ReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreReviewRequest $request)
+    public function store(StoreReviewRequest $request, Doctor $doctor)
     {
-        //
+        $review = new Review();
+        $review->doctor_id = $doctor->id;
+        $review->email = $request->validated('email');
+        $review->name = $request->validated('name');
+        $review->rating = $request->validated('rating');
+        $review->text = $request->validated('text');
+        $review->save();
+
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Review added'
+            ]
+        );
     }
+
 
     /**
      * Display the specified resource.
