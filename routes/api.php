@@ -28,4 +28,5 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/user', [AuthController::class, 'user'])->middleware('auth:sanctum');
 
 Route::resource('specializations', SpecializationController::class)->only(['index']);
+Route::resource('doctors', DoctorController::class)->only(['index']);
 Route::match(['put', 'patch'], '/user/edit', [DoctorController::class, 'update'])->middleware('auth:sanctum');
