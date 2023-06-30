@@ -62,7 +62,7 @@ class AuthController extends Controller
         ]);
     }
 
-    public function me(Request $request)
+    public function user(Request $request)
     {
         $userID = $request->user()->id;
         $loggedDoctor = Doctor::with('reviews', 'specializations', 'subscriptions', 'messages', 'experiences')->where('user_id', $userID)->first();
