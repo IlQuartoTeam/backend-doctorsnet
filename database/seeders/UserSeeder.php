@@ -6,6 +6,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Faker\Factory as Faker;
+
 
 
 class UserSeeder extends Seeder
@@ -13,30 +15,25 @@ class UserSeeder extends Seeder
     /**
      * Run the database seeds.
      */
+
+
     public function run(): void
     {
-        $users = [
-            ["name" => 'Paolo',
-            'surname' => 'Rossi',
-            'email' => 'paolorossi@gmail.com',
-            'password' => 'PaoloRossi2023' ],
-            ["name" => 'Giovanni',
-            'surname' => 'Palumbo',
-            'email' => 'giovannipalumbo@gmail.com',
-            'password' => 'GiovanniPalumbo' ],
-            ["name" => 'Francesco',
-            'surname' => 'Sassi',
-            'email' => 'francosassi@gmail.com',
-            'password' => 'FrancoSassi2023' ],
-            ["name" => 'Maria',
-            'surname' => 'Rossa',
-            'email' => 'mariarossa@gmail.com',
-            'password' => 'PaolinaRossina2023' ],
-            ["name" => 'Franco',
-            'surname' => 'Ciccio',
-            'email' => 'franchino@gmail.com',
-            'password' => 'franchino2029' ],
-        ];
+
+        $faker = Faker::create();
+
+        $users = [];
+
+for ($i = 0; $i < 55; $i++) {
+    $user = [
+        'name' => $faker->firstName,
+        'surname' => $faker->lastName,
+        'email' => $faker->email,
+        'password' => 'raffaele2023',
+    ];
+
+    $users[] = $user;
+}
 
         foreach ($users as $user) {
             $newUser = new User();
