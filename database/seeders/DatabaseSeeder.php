@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             ReviewsSeeder::class,
             SpecializationsSeeder::class,
             SubscriptionsSeeder::class,
+            SynchSeeder::class
         ]);
     }
 }

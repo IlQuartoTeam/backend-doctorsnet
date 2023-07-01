@@ -22,6 +22,8 @@ class DoctorsSeeder extends Seeder
             $newDoctor->examinations = $value['examinations'];
             $newDoctor->address = $value['address'];
             $newDoctor->city = $value['city'];
+            $newDoctor->address_lat = $value['lat'];
+            $newDoctor->address_long = $value['long'];
             $newDoctor->save();
 
         }
