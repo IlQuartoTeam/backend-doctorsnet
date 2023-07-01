@@ -30,6 +30,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 Route::post('/user', [AuthController::class, 'user'])->middleware('auth:sanctum');
 
 Route::resource('specializations', SpecializationController::class)->only(['index']);
-Route::resource('doctors', DoctorController::class)->parameters(['users' => 'users:slug'])->only(['index', 'show']);
+Route::resource('doctors', DoctorController::class)->parameters(['doctors' => 'doctor:slug'])->only(['index', 'show']);
 Route::resource('doctors.reviews', ReviewController::class)->only(['store']);
 Route::match(['put', 'patch'], '/user/edit', [DoctorController::class, 'update'])->middleware('auth:sanctum');

@@ -31,6 +31,7 @@ class AuthController extends Controller
 //creazione Doctor e assegnazione dati della registrazione
        $doctor = new Doctor();
        $doctor->user_id = $user->id;
+       $doctor->slug = $user->slug;
        $doctor->address = $request->validated('address');
        $doctor->city = $request->validated('city');
        $doctor->address_lat = $request->validated('lat');

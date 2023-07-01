@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Doctor;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
 class DoctorsSeeder extends Seeder
 {
@@ -17,6 +18,8 @@ class DoctorsSeeder extends Seeder
         foreach ($doctors as $key => $value) {
             $newDoctor = new Doctor;
             $newDoctor->user_id = $key + 1;
+            $user = User::where('id', $key + 1)->first();
+            $newDoctor->slug = $user->slug;
             $newDoctor->phone = $value['phone'];
             $newDoctor->profile_image_url = $value['profile_image_url'];
             $newDoctor->examinations = $value['examinations'];
