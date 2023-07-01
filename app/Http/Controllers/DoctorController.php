@@ -89,32 +89,33 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
+        $doctor->load('specializations', 'subscriptions');
+        $allratings = [];
+        $user = User::where('id', $doctor->user_id)->first();
+        $doctor->name = $user->name;
+        $doctor->surname = $user->surname;
+        $doctor->slug = $user->slug;
 
-            $allratings = [];
-            $user = User::where('id', $doctor->user_id)->first();
-            $doctor->name = $user->name;
-            $doctor->surname = $user->surname;
-            $doctor->slug = $user->slug;
+        $reviews = Review::where('doctor_id', $doctor->id)->get();
+        foreach ($reviews as $review) { //prendo i voti e li metto in un array
+            array_push($allratings, $review->rating);
+        }
+        //calcolo media
+        if (count($allratings) > 0) {
+            $sum = array_sum($allratings);
+            $count = count($allratings);
 
-            $reviews = Review::where('doctor_id', $doctor->id)->get();
-            foreach ($reviews as $review) { //prendo i voti e li metto in un array
-                array_push($allratings, $review->rating);
-            }
-            //calcolo media
-            if (count($allratings) > 0) {
-                $sum = array_sum($allratings);
-                $count = count($allratings);
+            $average = $sum / $count;
+            $doctor->average_rating = round($average, 1);
 
-                $average = $sum / $count;
-                $doctor->average_rating = round($average, 1);
-
-                return response()->json(
-                    [
-                        'success' => true,
-                        'results' => $doctor
-                    ]
-                );
-    }}
+            return response()->json(
+                [
+                    'success' => true,
+                    'results' => $doctor
+                ]
+            );
+        }
+    }
 
     /**
      * Show the form for editing the specified resource.
