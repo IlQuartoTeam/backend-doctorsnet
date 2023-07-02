@@ -23,10 +23,10 @@ class DoctorController extends Controller
         $city = $request->input('city');
 
         if ($city) {
-            $doctors = Doctor::where('city', $city)->with('specializations', 'subscriptions')->paginate(10);
+            $doctors = Doctor::where('city', $city)->with('specializations', 'subscriptions', 'reviews')->paginate(10);
             $doctors->appends(['city' => $city]);
         } else {
-            $doctors = Doctor::latest()->with('specializations', 'subscriptions')->paginate(10);
+            $doctors = Doctor::latest()->with('specializations', 'subscriptions', 'reviews')->paginate(10);
         }
 
 
