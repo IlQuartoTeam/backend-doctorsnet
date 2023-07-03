@@ -28,7 +28,7 @@ class LoginUserRequest extends FormRequest
     {
         return [
             'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:8'
+            'password' => 'required|string'
 
         ];
     }
@@ -40,7 +40,6 @@ class LoginUserRequest extends FormRequest
             'email.required' => "L'email è richiesta",
             'email.unique' => "Email già presente nei nostri sistemi",
             'password.required' => "La password è richiesta",
-            'password.min' => "La password deve essere di :min caratteri"
 
         ];
     }
