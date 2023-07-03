@@ -32,7 +32,7 @@ class RegisterUserRequest extends FormRequest
             'address' => 'required',
             'city' => 'required' ,
             'specialization' => 'required|exists:specializations,id',
-            'phone' => 'digits_between:9,11|nullable',
+            'phone' => 'nullable',
             'lat' => 'required',
             'long' => 'required'
 
@@ -54,7 +54,6 @@ class RegisterUserRequest extends FormRequest
             'city.required' => 'La città è obbligatoria',
             'address.required' => "L'indirizzo è obbligatorio",
             'specialization.exists' => 'Specializzazione non presente',
-            'phone.digits_between' => "Il numero di telefono non ha un formato corretto"
 
 
         ];
