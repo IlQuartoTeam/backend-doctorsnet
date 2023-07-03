@@ -16,10 +16,11 @@ class SynchSeeder extends Seeder
     public function run(): void
     {
 
-        for ($i = 1; $i <= 25; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
+            $toSubscribe = [2,4];
             $doctor = Doctor::where('id', $i)->first();
-            $randID = rand(1, 3);
-            if ($doctor->id == 2) {
+            if (in_array($i, $toSubscribe)) {
+                $randID = rand(1, 3);
             $subscription = Subscription::where('id', $randID)->first();
             //   dd($subscription->days_duration);
             $doctor->subscriptions()->attach($randID, ['end_date' => Carbon::now()->addDays($subscription->days_duration)]);
