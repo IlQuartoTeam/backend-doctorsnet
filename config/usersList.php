@@ -7,25 +7,25 @@ return [
         'surname' => 'Rossi',
         'email' => 'paolorossi@gmail.com',
         'password' => 'PaoloRossi2023'
-    ],
+    ], //maschio
     [
         "name" => 'Giovanni',
         'surname' => 'Palumbo',
         'email' => 'giovannipalumbo@gmail.com',
         'password' => 'GiovanniPalumbo'
-    ],
+    ], //maschio
     [
         "name" => 'Francesco',
         'surname' => 'Sassi',
         'email' => 'francosassi@gmail.com',
         'password' => 'doctorsnet'
-    ],
+    ], //maschio
     [
         "name" => 'Maria',
         'surname' => 'Rossa',
         'email' => 'mariarossa@gmail.com',
         'password' => 'doctorsnet'
-    ],
+    ], //femmina e da qui in poi si alternano
     [
         "name" => 'Franco',
         'surname' => 'Ciccio',
