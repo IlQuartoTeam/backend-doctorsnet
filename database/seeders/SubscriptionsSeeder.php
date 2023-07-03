@@ -14,17 +14,17 @@ class SubscriptionsSeeder extends Seeder
     public function run(): void
     {
         DB::table('subscriptions')->insert([
-            'name' => '1 day',
+            'name' => '1 giorno',
             'price' => 2.99,
             'days_duration' => 1
         ]);
         DB::table('subscriptions')->insert([
-            'name' => '3 day',
+            'name' => '3 giorni',
             'price' => 5.99,
             'days_duration' => 3
         ]);
         DB::table('subscriptions')->insert([
-            'name' => '6 day',
+            'name' => '6 giorni',
             'price' => 9.99,
             'days_duration' => 6
         ]);
