@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 use App\Models\Doctor;
 
 
@@ -80,7 +81,23 @@ class AuthController extends Controller
     public function user(Request $request)
     {
         $userID = $request->user()->id;
-        $loggedDoctor = Doctor::with('reviews', 'specializations', 'subscriptions', 'messages', 'experiences')->where('user_id', $userID)->first();
+        $loggedDoctor = Doctor::with(['reviews', 'specializations', 'subscriptions' => function ($query) {
+            $query->where('end_date', '>', Carbon::now());}, 'messages', 'experiences'])->where('user_id', $userID)->first();
+
+        if ($loggedDoctor->subscriptions->count() != 0) {
+
+            $premiumData = [
+                'premium' => true,
+                'days' => $loggedDoctor->subscriptions[0]->name,
+            ];}
+            else {
+                $premiumData = [
+                    'premium' => false
+                ];
+            }
+
+        $loggedDoctor->subscription = $premiumData;
+
         return $data = [
             'doctor' => $loggedDoctor,
             'user' => $request->user(),

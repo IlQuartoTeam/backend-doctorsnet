@@ -7,6 +7,7 @@ use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
@@ -23,20 +24,31 @@ class DoctorController extends Controller
         $city = $request->input('city');
 
         if ($city) {
-            $doctors = Doctor::where('city', $city)->with('specializations', 'subscriptions', 'reviews')->paginate(10);
+            $doctors = Doctor::where('city', $city)->with(['specializations', 'subscriptions' => function ($query) {
+                $query->where('end_date', '>', Carbon::now());
+            }, 'reviews'])->paginate(10);
             $doctors->appends(['city' => $city]);
         } else {
-            $doctors = Doctor::latest()->with('specializations', 'subscriptions', 'reviews')->paginate(10);
+            $doctors = Doctor::latest()->with(['specializations', 'subscriptions' => function ($query) {
+                $query->where('end_date', '>', Carbon::now());
+            }, 'reviews'])->paginate(10);
         }
 
 
 
-        $doctors->makeHidden(['user_id', 'created_at', 'updated_at']); //escludi campi
+        $doctors->makeHidden(['user_id', 'created_at', 'updated_at', 'subscriptions']); //escludi campi
         foreach ($doctors as $doctor) { //sposta campi da user a doctor e aggiungi rating medio
             $user = User::where('id', $doctor->user_id)->first();
             $doctor->name = $user->name;
             $doctor->surname = $user->surname;
             $doctor->slug = $user->slug;
+          //  dd($doctor->subscriptions->count());
+            if ($doctor->subscriptions->count() != 0) {
+                $doctor->premium = true;
+            }
+            else {
+                $doctor->premium = false;
+            }
 
             $reviews = Review::where('doctor_id', $doctor->id)->get();
             foreach ($reviews as $review) { //prendo i voti e li metto in un array
@@ -89,7 +101,8 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        $doctor->load('specializations', 'subscriptions');
+        $doctor->load('specializations');
+
         $allratings = [];
         $user = User::where('id', $doctor->user_id)->first();
         $doctor->name = $user->name;

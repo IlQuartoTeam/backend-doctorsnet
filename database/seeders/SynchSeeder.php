@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Subscription;
 use App\Models\Doctor;
+use Illuminate\Support\Carbon;
 
 class SynchSeeder extends Seeder
 {
@@ -14,11 +16,15 @@ class SynchSeeder extends Seeder
     public function run(): void
     {
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 25; $i++) {
             $doctor = Doctor::where('id', $i)->first();
-            $doctor->subscriptions()->attach(rand(1,3));
-            $doctor->specializations()->attach(rand(1,25));
+            $randID = rand(1, 3);
+            if ($doctor->id == 2) {
+            $subscription = Subscription::where('id', $randID)->first();
+            //   dd($subscription->days_duration);
+            $doctor->subscriptions()->attach($randID, ['end_date' => Carbon::now()->addDays($subscription->days_duration)]);
+            }
+            $doctor->specializations()->attach(rand(1, 25));
+        }}
 
-        }
-    }
 }
