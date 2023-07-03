@@ -15,29 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = [
-            ["name" => 'Paolo',
-            'surname' => 'Rossi',
-            'email' => 'paolorossi@gmail.com',
-            'password' => 'PaoloRossi2023' ],
-            ["name" => 'Giovanni',
-            'surname' => 'Palumbo',
-            'email' => 'giovannipalumbo@gmail.com',
-            'password' => 'GiovanniPalumbo' ],
-            ["name" => 'Francesco',
-            'surname' => 'Sassi',
-            'email' => 'francosassi@gmail.com',
-            'password' => 'FrancoSassi2023' ],
-            ["name" => 'Maria',
-            'surname' => 'Rossa',
-            'email' => 'mariarossa@gmail.com',
-            'password' => 'PaolinaRossina2023' ],
-            ["name" => 'Franco',
-            'surname' => 'Ciccio',
-            'email' => 'franchino@gmail.com',
-            'password' => 'franchino2029' ],
-        ];
-
+        $users = config('usersList');
         foreach ($users as $user) {
             $newUser = new User();
             $newUser->name = $user['name'];
