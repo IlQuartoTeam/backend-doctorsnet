@@ -1,10 +1,17 @@
 <?php
+$male1 = "https://shorturl.at/tBEO2";
+$male2 = "https://shorturl.at/rsW34";
+$male3 = "https://shorturl.at/jnryG";
+$male4 = "https://shorturl.at/yZ568";
+$female1 = "https://t.ly/djRd";
+$female2 = "https://t.ly/_OPc";
+$female3 = "https://t.ly/8Nyz";
 
 return [
     // ROMA
     [
         "phone" => "393331234567",
-        "profile_image_url" => "https://source.unsplash.com/random/?male,doctor",
+        "profile_image_url" => $male1,
         "examinations" => "Visita Dermatologica: 200€; Esportazione Verruche: 150€",
         "address" => "Via del Quirinale, 18, 00184",
         "city" => "Roma",
@@ -13,7 +20,7 @@ return [
     ],
     [
         "phone" => "393349876543",
-        "profile_image_url" => "https://source.unsplash.com/random/?male,doctor",
+        "profile_image_url" => $male2,
         "examinations" => "Elettrocardiogramma: 80€; Holter pressorio: 120€",
         "address" => "Via Nazionale, 48, 00184",
         "city" => "Roma",
@@ -22,7 +29,7 @@ return [
     ],
     [
         "phone" => "393398765432",
-        "profile_image_url" => "https://source.unsplash.com/random/?male,doctor",
+        "profile_image_url" => $male3,
         "examinations" => "Visita Odontoiatrica: 100€; Sbiancamento Dentale: 150€",
         "address" => "Piazza di Spagna, 20, 00187",
         "city" => "Roma",
@@ -31,7 +38,7 @@ return [
     ],
     [
         "phone" => "393387654321",
-        "profile_image_url" => "https://source.unsplash.com/random/?female,doctor",
+        "profile_image_url" => $female1,
         "examinations" => "Visita Ginecologica: 150€; Ecografia Ostetrica: 200€",
         "address" => "Via Appia Nuova, 123, 00179",
         "city" => "Roma",
@@ -40,7 +47,7 @@ return [
     ],
     [
         "phone" => "393376543210",
-        "profile_image_url" => "https://source.unsplash.com/random/?male,doctor",
+        "profile_image_url" => $male4,
         "examinations" => "Visita Neurologica: 180€; Elettromiografia: 250€",
         "address" => "Via dei Fori Imperiali, 1, 00186",
         "city" => "Roma",
@@ -50,7 +57,7 @@ return [
     // TORINO
     [
         "phone" => "393331234567",
-        "profile_image_url" => "https://source.unsplash.com/random/?femmina,doctor",
+        "profile_image_url" => $female1,
         "examinations" => "Visita Dermatologica: 200€; Esportazione Verruche: 150€",
         "address" => "Via dell'Arsenale, 15",
         "city" => "Torino",
@@ -59,7 +66,7 @@ return [
     ],
     [
         "phone" => "393349876543",
-        "profile_image_url" => "https://source.unsplash.com/random/?male,doctor",
+        "profile_image_url" => $male1,
         "examinations" => "Elettrocardiogramma: 80€; Holter pressorio: 120€",
         "address" => "Via Po, 20/E",
         "city" => "Torino",
@@ -68,7 +75,7 @@ return [
     ],
     [
         "phone" => "393398765432",
-       "profile_image_url" => "https://source.unsplash.com/random/?femmina,doctor",
+        "profile_image_url" => $female2,
         "examinations" => "Visita Odontoiatrica: 100€; Sbiancamento Dentale: 150€",
         "address" => "Via Luigi Cibrario, 9",
         "city" => "Torino",
@@ -77,7 +84,7 @@ return [
     ],
     [
         "phone" => "393387654321",
-        "profile_image_url" => "https://source.unsplash.com/random/?male,doctor",
+        "profile_image_url" => $male2,
         "examinations" => "Visita Ginecologica: 150€; Ecografia Ostetrica: 200€",
         "address" => "Via Claudio Beaumont, 48",
         "city" => "Torino",
@@ -86,7 +93,7 @@ return [
     ],
     [
         "phone" => "393376543210",
-       "profile_image_url" => "https://source.unsplash.com/random/?femmina,doctor",
+        "profile_image_url" => $female3,
         "examinations" => "Visita Neurologica: 180€; Elettromiografia: 250€",
         "address" => "Via S. Tommaso 5",
         "city" => "Torino",
@@ -96,7 +103,7 @@ return [
     // MILANO
     [
         "phone" => "393331234567",
-        "profile_image_url" => "https://source.unsplash.com/random/?male,doctor",
+        "profile_image_url" => $male3,
         "examinations" => "Visita Dermatologica: 200€; Esportazione Verruche: 150€",
         "address" => "Via Bassano Porrone 3",
         "city" => "Milano",
@@ -105,7 +112,7 @@ return [
     ],
     [
         "phone" => "393349876543",
-        "profile_image_url" => "https://source.unsplash.com/random/?femmina,doctor",
+        "profile_image_url" => $female1,
         "examinations" => "Elettrocardiogramma: 80€; Holter pressorio: 120€",
         "address" => "Piazza Tommaso Edison 3",
         "city" => "Milano",
@@ -114,7 +121,7 @@ return [
     ],
     [
         "phone" => "393398765432",
-       "profile_image_url" => "https://source.unsplash.com/random/?male,doctor",
+        "profile_image_url" => $male4,
         "examinations" => "Visita Odontoiatrica: 100€; Sbiancamento Dentale: 150€",
         "address" => "Via Ansperto, 4",
         "city" => "Milano",
@@ -123,7 +130,7 @@ return [
     ],
     [
         "phone" => "393387654321",
-       "profile_image_url" => "https://source.unsplash.com/random/?femmina,doctor",
+        "profile_image_url" => $female2,
         "examinations" => "Visita Ginecologica: 150€; Ecografia Ostetrica: 200€",
         "address" => "Via Torino, 7",
         "city" => "Milano",
@@ -132,7 +139,7 @@ return [
     ],
     [
         "phone" => "393376543210",
-        "profile_image_url" => "https://source.unsplash.com/random/?male,doctor",
+        "profile_image_url" => $male1,
         "examinations" => "Visita Neurologica: 180€; Elettromiografia: 250€",
         "address" => "Piazza Salvatore Quasimodo, 2",
         "city" => "Milano",
@@ -142,7 +149,7 @@ return [
      // NAPOLI
      [
         "phone" => "393331234567",
-        "profile_image_url" => "https://source.unsplash.com/random/?femmina,doctor",
+        "profile_image_url" => $female3,
         "examinations" => "Visita Dermatologica: 200€; Esportazione Verruche: 150€",
         "address" => "Via Toledo, 15",
         "city" => "Napoli",
@@ -151,7 +158,7 @@ return [
     ],
     [
         "phone" => "393349876543",
-        "profile_image_url" => "https://source.unsplash.com/random/?male,doctor",
+        "profile_image_url" => $male2,
         "examinations" => "Elettrocardiogramma: 80€; Holter pressorio: 120€",
         "address" => "Piazza del Plebiscito, 1",
         "city" => "Napoli",
@@ -160,7 +167,7 @@ return [
     ],
     [
         "phone" => "393398765432",
-       "profile_image_url" => "https://source.unsplash.com/random/?femmina,doctor",
+        "profile_image_url" => $female1,
         "examinations" => "Visita Odontoiatrica: 100€; Sbiancamento Dentale: 150€",
         "address" => "Via dei Tribunali, 10",
         "city" => "Napoli",
@@ -169,7 +176,7 @@ return [
     ],
     [
         "phone" => "393387654321",
-       "profile_image_url" => "https://source.unsplash.com/random/?male,doctor",
+        "profile_image_url" => $male3,
         "examinations" => "Visita Ginecologica: 150€; Ecografia Ostetrica: 200€",
         "address" => "Spaccanapoli, 5",
         "city" => "Napoli",
@@ -178,7 +185,7 @@ return [
     ],
     [
         "phone" => "393376543210",
-       "profile_image_url" => "https://source.unsplash.com/random/?femmina,doctor",
+        "profile_image_url" => $female2,
         "examinations" => "Visita Neurologica: 180€; Elettromiografia: 250€",
         "address" => "Via San Gregorio Armeno, 20",
         "city" => "Napoli",
@@ -188,7 +195,7 @@ return [
      // CATANIA
      [
         "phone" => "393331234567",
-        "profile_image_url" => "https://source.unsplash.com/random/?male,doctor",
+        "profile_image_url" => $male4,
         "examinations" => "Visita Dermatologica: 200€; Esportazione Verruche: 150€",
         "address" => "Via Etnea, 100",
         "city" => "Catania",
@@ -197,7 +204,7 @@ return [
     ],
     [
         "phone" => "393349876543",
-       "profile_image_url" => "https://source.unsplash.com/random/?femmina,doctor",
+        "profile_image_url" => $female2,
         "examinations" => "Elettrocardiogramma: 80€; Holter pressorio: 120€",
         "address" => "Corso Sicilia, 50",
         "city" => "Catania",
@@ -206,7 +213,7 @@ return [
     ],
     [
         "phone" => "393398765432",
-       "profile_image_url" => "https://source.unsplash.com/random/?male,doctor",
+        "profile_image_url" => $male1,
         "examinations" => "Visita Odontoiatrica: 100€; Sbiancamento Dentale: 150€",
         "address" => "Via Crociferi, 30",
         "city" => "Catania",
@@ -215,7 +222,7 @@ return [
     ],
     [
         "phone" => "393387654321",
-        "profile_image_url" => "https://source.unsplash.com/random/?femmina,doctor",
+        "profile_image_url" => $female3,
         "examinations" => "Visita Ginecologica: 150€; Ecografia Ostetrica: 200€",
         "address" => "Piazza Duomo, 1",
         "city" => "Catania",
@@ -224,7 +231,7 @@ return [
     ],
     [
         "phone" => "393376543210",
-        "profile_image_url" => "https://source.unsplash.com/random/?male,doctor",
+        "profile_image_url" => $male2,
         "examinations" => "Visita Neurologica: 180€; Elettromiografia: 250€",
         "address" => "Via Vittorio Emanuele II, 80",
         "city" => "Catania",
