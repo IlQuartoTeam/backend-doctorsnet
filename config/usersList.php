@@ -237,9 +237,9 @@ return [
         'password' => 'doctorsnet'
     ],
     [
-        "name" => 'Federico',
-        'surname' => 'Bianchi',
-        'email' => 'federicobianchi@gmail.com',
+        "name" => 'Federica',
+        'surname' => 'Bianchiardi',
+        'email' => 'federicabianchiardi@gmail.com',
         'password' => 'doctorsnet'
     ],
     [
@@ -249,21 +249,21 @@ return [
         'password' => 'doctorsnet'
     ],
     [
-        "name" => 'Roberto',
-        'surname' => 'Galli',
-        'email' => 'robertogalli@gmail.com',
-        'password' => 'doctorsnet'
-    ],
-    [
-        "name" => 'Giulia',
-        'surname' => 'Rossi',
-        'email' => 'giuliarossi@gmail.com',
+        "name" => 'Roberta',
+        'surname' => 'Fumagalli',
+        'email' => 'robertafumagalli@gmail.com',
         'password' => 'doctorsnet'
     ],
     [
         "name" => 'Simone',
         'surname' => 'Bianchi',
         'email' => 'simonebianchi@gmail.com',
+        'password' => 'doctorsnet'
+    ],
+    [
+        "name" => 'Giulia',
+        'surname' => 'Rossi',
+        'email' => 'giuliarossi@gmail.com',
         'password' => 'doctorsnet'
     ],
     [
@@ -276,12 +276,6 @@ return [
         "name" => 'Elisa',
         'surname' => 'Galli',
         'email' => 'elisagalli@gmail.com',
-        'password' => 'doctorsnet'
-    ],
-    [
-        "name" => 'Chiara',
-        'surname' => 'Rossi',
-        'email' => 'chiararossi@gmail.com',
         'password' => 'doctorsnet'
     ],
     [
@@ -472,15 +466,21 @@ return [
         'password' => 'doctorsnet'
     ],
     [
+        "name" => 'Chiara',
+        'surname' => 'Rossi',
+        'email' => 'chiararossi@gmail.com',
+        'password' => 'doctorsnet'
+    ],
+    [
         "name" => 'Federico',
         'surname' => 'Fontana',
         'email' => 'federicofontana@gmail.com',
         'password' => 'doctorsnet'
     ],
     [
-        "name" => 'Lorenzo',
+        "name" => 'Anna',
         'surname' => 'Mancini',
-        'email' => 'lorenzomancini@gmail.com',
+        'email' => 'annamancini@gmail.com',
         'password' => 'doctorsnet'
     ],
     [
@@ -502,15 +502,15 @@ return [
         'password' => 'doctorsnet'
     ],
     [
-        "name" => 'Marco',
-        'surname' => 'Ricci',
-        'email' => 'marcoricci@gmail.com',
-        'password' => 'doctorsnet'
-    ],
-    [
         "name" => 'Elisa',
         'surname' => 'Moretti',
         'email' => 'elisamoretti@gmail.com',
+        'password' => 'doctorsnet'
+    ],
+    [
+        "name" => 'Marco',
+        'surname' => 'Ricci',
+        'email' => 'marcoricci@gmail.com',
         'password' => 'doctorsnet'
     ],
     [
