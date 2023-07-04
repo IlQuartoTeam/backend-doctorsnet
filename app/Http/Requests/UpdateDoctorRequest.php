@@ -26,7 +26,7 @@ class UpdateDoctorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'phone' => 'digits_between:9,11|nullable',
+            'phone' => 'nullable',
             'profile_image_url' => 'url',
             'address' => 'required',
             'city' => 'required',
@@ -40,7 +40,6 @@ class UpdateDoctorRequest extends FormRequest
         return [
             'city.required' => 'La città è obbligatoria',
             'address.required' => "L'indirizzo è obbligatorio",
-            'phone.digits_between' => "Il numero di telefono non ha un formato corretto",
             "profile_image_url" => "Link non valido"
 
 
