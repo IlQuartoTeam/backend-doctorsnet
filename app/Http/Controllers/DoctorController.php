@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateDoctorRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Carbon;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Models\Review;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
@@ -186,11 +187,11 @@ class DoctorController extends Controller
         //
     }
 
-    public function changePassword(Request $request)
+    public function changePassword(ChangePasswordRequest $request)
 
     {
         $user = Auth::user();
-        if ((!Hash::check($request->oldPassword, $user->password))) {
+        if ((!Hash::check($request->validated('oldPassword'), $user->password))) {
             return response()->json([
                 'status' => 'failed',
                 'message' => 'La vecchia password non è corretta'
@@ -198,7 +199,7 @@ class DoctorController extends Controller
 
         }
         else {
-            $newpassword = Hash::make($request->newPassword);
+            $newpassword = Hash::make($request->validated('newPassword'));
             $changeUser = User::findOrFail($user->id);
             $changeUser->password = $newpassword;
             $changeUser->save();
