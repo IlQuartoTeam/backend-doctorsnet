@@ -671,8 +671,168 @@ return [
         "city" => "Napoli",
         "lat" => "40.846998",
         "long" => "14.259787"
+    ],
+    /**
+     * MILANO
+     */
+    [
+        "phone" => "02 1234567",
+        "profile_image_url" => $male1,
+        "address" => "Via Montenapoleone, 1",
+        "city" => "Milano",
+        "lat" => 45.4675,
+        "long" => 9.1935
+    ],
+    [
+        "phone" => "+39 333 1234567",
+        "profile_image_url" => $female1,
+        "address" => "Corso Buenos Aires, 10",
+        "city" => "Milano",
+        "lat" => 45.4780,
+        "long" => 9.2194
+    ],
+    [
+        'phone' => '0298765432',
+        'profile_image_url' => $male2,
+        'address' => 'Corso Vittorio Emanuele II,20',
+        'city' => 'Milano',
+        'lat' => '45.4658',
+        'long' => '9.1916'
+    ],
+    [
+        'phone' => '+393331234567',
+        'profile_image_url' => $female2,
+        'address' => 'Via Dante,30',
+        'city' => 'Milano',
+        'lat' => '45.4668',
+        'long' => '9.1823'
+    ],
+    [
+        'phone' => '+393332345678',
+        'profile_image_url' => $male3,
+        'address' => 'Corso di Porta Ticinese,40',
+        'city' => 'Milano',
+        'lat' => '45.4546',
+        'long' => '9.1814'
+    ],
+    [
+        'phone' => '+393333456789',
+        'profile_image_url' => $female3,
+        'address' => 'Via Torino,50',
+        'city' => 'Milano',
+        'lat' => '45.4620',
+        'long' => '9.1876'
+    ],
+    [
+        'phone' => '+393334567890',
+        'profile_image_url' => $male4,
+        'address' =>    'Corso Como,60',
+        'city' =>    'Milano',
+        'lat' =>    45.4825,
+        'long' =>    9.1878
+    ],
+    [
+        'phone' => '+393335678901',
+        'profile_image_url' => $female4,
+        'address' =>    'Via Brera,70',
+        'city' =>    'Milano',
+        'lat' =>    45.4718,
+        'long' =>    9.1875
+    ],
+    [
+        "phone" => ' +393336789012 ',
+        "profile_image_url" => $male5,
+        "address" => ' Via della Spiga ,80 ',
+        "city" => ' Milano ',
+        "lat" => 45.4690,
+        "long" => 9.1963
+    ],
+    [
+        "phone" => ' +393337890123 ',
+        "profile_image_url" => $female5,
+        "address" => ' Corso Magenta ,90 ',
+        "city" => ' Milano ',
+        "lat" => 45.4652,
+        "long" => 9.1741
+    ],
+    [
+        "phone" => ' +393338901234 ',
+        "profile_image_url" => $male6,
+        "address" => ' Via Manzoni ,100 ',
+        "city" => ' Milano ',
+        "lat" => 45.4702,
+        "long" => 9.1957
+    ],
+    [
+        "phone" => ' +393339012345 ',
+        "profile_image_url" => $female6,
+        "address" => ' Via Sant\'Andrea ,110 ',
+        "city" => ' Milano ',
+        "lat" => 45.4693,
+        "long" => 9.1960
+    ],
+    [
+        "phone" => ' +393340123456 ',
+        "profile_image_url" => $male7,
+        "address" => ' Via Borgospesso ,120 ',
+        "city" => ' Milano ',
+        "lat" => 45.4697,
+        "long" => 9.1976
+    ],
+    [
+        "phone" => ' +393341234567 ',
+        "profile_image_url" => $female7,
+        "address" => ' Via Santo Spirito ,130 ',
+        "city" => ' Milano ',
+        "lat" => 45.4688,
+        "long" => 9.1971
+    ],
+    [
+        "phone" => ' +393342345678 ',
+        "profile_image_url" => $male8,
+        "address" => ' Via Verri ,140 ',
+        "city" => ' Milano ',
+        "lat" => 45.4680,
+        "long" => 9.1954
+    ],
+    [
+        "phone" => ' +393343456789 ',
+        "profile_image_url" => $female8,
+        "address" => ' Via Bigli ,150 ',
+        "city" => ' Milano ',
+        "lat" => 45.4682,
+        "long" => 9.1942
+    ],
+    [
+        "phone" => ' +393344567890 ',
+        "profile_image_url" => $male9,
+        "address" => ' Via Bagutta ,160 ',
+        "city" => ' Milano ',
+        "lat" => 45.4692,
+        "long" => 9.1946
+    ],
+    [
+        "phone" => ' +393345678901 ',
+        "profile_image_url" => $female9,
+        "address" => ' Via Durini ,170 ',
+        "city" => ' Milano ',
+        "lat" => 45.4631,
+        "long" => 9.1968
+    ],
+    [
+        "phone" => "+39 333 6789012",
+        "profile_image_url" => $male10,
+        "address" => "Via Montenapoleone,180",
+        "city" => "Milano",
+        "lat" => 45.4675,
+        "long" => 9.1935
+    ],
+    [
+        "phone" => "+39 333 7890123",
+        "profile_image_url" => $female10,
+        "address" => "Corso Buenos Aires,190",
+        "city" => "Milano",
+        "lat" => 45.4780,
+        "long" => 9.2194
     ]
-
-
-
 ];
