@@ -177,9 +177,9 @@ return [
         'password' => 'doctorsnet'
     ],
     [
-        "name" => 'Federico',
+        "name" => 'Federica',
         'surname' => 'Verdi',
-        'email' => 'federicoverdi@gmail.com',
+        'email' => 'federicaverdi@gmail.com',
         'password' => 'doctorsnet'
     ],
     [
@@ -303,12 +303,11 @@ return [
         'password' => 'doctorsnet'
     ],
     [
-        "name" => 'Federico',
+        "name" => 'Federica',
         'surname' => 'Rossi',
-        'email' => 'federicorossi@gmail.com',
+        'email' => 'federicarossi@gmail.com',
         'password' => 'doctorsnet'
     ],
-    /* Da qui in poi non ha alternato */
     [
         "name" => 'Lorenzo',
         'surname' => 'Bianchi',
@@ -539,21 +538,15 @@ return [
         'password' => 'doctorsnet'
     ],
     [
-        "name" => 'Federico',
+        "name" => 'Federica',
         'surname' => 'Marini',
-        'email' => 'federicomarini@gmail.com',
+        'email' => 'federicamarini@gmail.com',
         'password' => 'doctorsnet'
     ],
     [
         "name" => 'Lorenzo',
         'surname' => 'De Luca',
         'email' => 'lorenzodeluca@gmail.com',
-        'password' => 'doctorsnet'
-    ],
-    [
-        "name" => 'Roberto',
-        'surname' => 'Gentile',
-        'email' => 'robertogentile@gmail.com',
         'password' => 'doctorsnet'
     ],
     [
@@ -569,15 +562,15 @@ return [
         'password' => 'doctorsnet'
     ],
     [
-        "name" => 'Marco',
-        'surname' => 'Caruso',
-        'email' => 'marcocaruso@gmail.com',
-        'password' => 'doctorsnet'
-    ],
-    [
         "name" => 'Elisa',
         'surname' => 'Barbieri',
         'email' => 'elisabarbieri@gmail.com',
+        'password' => 'doctorsnet'
+    ],
+    [
+        "name" => 'Marco',
+        'surname' => 'Caruso',
+        'email' => 'marcocaruso@gmail.com',
         'password' => 'doctorsnet'
     ],
     [
@@ -602,6 +595,12 @@ return [
         "name" => 'Davide',
         'surname' => 'Villa',
         'email' => 'davidevilla@gmail.com',
+        'password' => 'doctorsnet'
+    ],
+    [
+        "name" => 'Roberta',
+        'surname' => 'Gentile',
+        'email' => 'robertagentile@gmail.com',
         'password' => 'doctorsnet'
     ],
 
