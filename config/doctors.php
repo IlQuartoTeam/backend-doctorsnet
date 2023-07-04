@@ -509,5 +509,170 @@ return [
         "city" => "Roma",
         "lat" => 41.9002,
         "long" => 12.4946
+    ],
+    // NAPOLI
+
+    [
+        "phone" => "393331234567",
+        "profile_image_url" => $male1,
+        "address" => "Via Toledo, 1, 80132",
+        "city" => "Napoli",
+        "lat" => "40.8384426",
+        "long" => "14.2497856"
+    ],
+    [
+        "phone" => "393332345678",
+        "profile_image_url" => $male2,
+        "address" => "Via Chiaia, 20, 80121",
+        "city" => "Napoli",
+        "lat" => "40.837963",
+        "long" => "14.2499832"
+    ],
+    [
+        "phone" => "393333456789",
+        "profile_image_url" => $male3,
+        "address" => "Piazza del Plebiscito, 1, 80132",
+        "city" => "Napoli",
+        "lat" => "40.8377877",
+        "long" => "14.2492926"
+    ],
+    [
+        "phone" => "393334567890",
+        "profile_image_url" => $male4,
+        "address" => "Via San Gregorio Armeno, 1, 80138",
+        "city" => "Napoli",
+        "lat" => "40.8490172",
+        "long" => "14.2564397"
+    ],
+    [
+        "phone" => "393335678901",
+        "profile_image_url" => $male5,
+        "address" => "Via Caracciolo, 1, 80121",
+        "city" => "Napoli",
+        "lat" => "40.8296851",
+        "long" => "14.2437296"
+    ],
+    [
+        "phone" => "393336789012",
+        "profile_image_url" => $male6,
+        "address" => "Via Santa Lucia, 50, 80132",
+        "city" => "Napoli",
+        "lat" => "40.8374571",
+        "long" => "14.2437296"
+    ],
+    [
+        "phone" => "393337890123",
+        "profile_image_url" => $male7,
+        "address" => "Via Partenope, 1, 80121",
+        "city" => "Napoli",
+        "lat" => "40.828567",
+        "long" => "14.2426033"
+    ],
+    [
+        "phone" => "393338901234",
+        "profile_image_url" => $male8,
+        "address" => "Via Duomo, 149, 80138",
+        "city" => "Napoli",
+        "lat" => "40.8494581",
+        "long" => "14.2686145"
+    ],
+    [
+        "phone" => "393339012345",
+        "profile_image_url" => $male9,
+        "address" => "Via dei Tribunali, 1, 80138",
+        "city" => "Napoli",
+        "lat" => "40.8518479",
+        "long" => "14.2680253"
+    ],
+    [
+        "phone" => "393331023456",
+        "profile_image_url" => $male10,
+        "address" => "Via San Biagio dei Librai, 39, 80138",
+        "city" => "Napoli",
+        "lat" => "40.8523254",
+        "long" => "14.2686946"
+    ],
+    [
+        "phone" => "393337654321",
+        "profile_image_url" => $female1,
+        "address" => "Via Roma, 10, 80100",
+        "city" => "Napoli",
+        "lat" => "40.852741",
+        "long" => "14.270825"
+    ],
+    [
+        "phone" => "393336543210",
+        "profile_image_url" => $female2,
+        "address" => "Corso Umberto I, 20, 80100",
+        "city" => "Napoli",
+        "lat" => "40.853257",
+        "long" => "14.272646"
+    ],
+    [
+        "phone" => "393335432109",
+        "profile_image_url" => $female3,
+        "address" => "Via Duomo, 30, 80100",
+        "city" => "Napoli",
+        "lat" => "40.850510",
+        "long" => "14.262754"
+    ],
+    [
+        "phone" => "393334321098",
+        "profile_image_url" => $female4,
+        "address" => "Via Posillipo, 40, 80100",
+        "city" => "Napoli",
+        "lat" => "40.833628",
+        "long" => "14.221810"
+    ],
+    [
+        "phone" => "393333210987",
+        "profile_image_url" => $female5,
+        "address" => "Viale Augusto, 50, 80100",
+        "city" => "Napoli",
+        "lat" => "40.854480",
+        "long" => "14.266550"
+    ],
+    [
+        "phone" => "393332109876",
+        "profile_image_url" => $female6,
+        "address" => "Via Nazionale, 60, 80100",
+        "city" => "Napoli",
+        "lat" => "40.857286",
+        "long" => "14.269922"
+    ],
+    [
+        "phone" => "393331098765",
+        "profile_image_url" => $female7,
+        "address" => "Via Santa Lucia, 70, 80100",
+        "city" => "Napoli",
+        "lat" => "40.837555",
+        "long" => "14.244303"
+    ],
+    [
+        "phone" => "393330987654",
+        "profile_image_url" => $female8,
+        "address" => "Via Caracciolo, 80, 80100",
+        "city" => "Napoli",
+        "lat" => "40.831423",
+        "long" => "14.243141"
+    ],
+    [
+        "phone" => "393329876543",
+        "profile_image_url" => $female9,
+        "address" => "Piazza Garibaldi, 90, 80100",
+        "city" => "Napoli",
+        "lat" => "40.853384",
+        "long" => "14.273678"
+    ],
+    [
+        "phone" => "393328765432",
+        "profile_image_url" => $female10,
+        "address" => "Via dei Mille, 100, 80100",
+        "city" => "Napoli",
+        "lat" => "40.846998",
+        "long" => "14.259787"
     ]
+
+
+
 ];
