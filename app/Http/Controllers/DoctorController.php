@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use App\Models\Review;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 
@@ -143,7 +144,13 @@ class DoctorController extends Controller
      */
     public function update(UpdateDoctorRequest $request)
     {
+
         $loggedID = Auth::user()->id;
+
+        $user = User::where('id', $loggedID)->first();
+
+        $user->name = $request->validated('name');
+        $user->surname = $request->validated('surname');
         $doctorLogged = Doctor::where('user_id', $loggedID)->first();
         $doctorLogged->address = $request->validated('address');
         $doctorLogged->city = $request->validated('city');
@@ -158,7 +165,12 @@ class DoctorController extends Controller
         if ($request->filled('examinations')) {
             $doctorLogged->examinations = $request->input('examinations');
         }
+        $randId = rand(1,300);
+        $newSlug = Str::slug($request->validated('name') . '-' . $request->validated('surname') . '-' . $randId);
+        $doctorLogged->slug = $newSlug;
+        $user->slug = $newSlug;
         $doctorLogged->save();
+        $user->save();
 
         return response()->json([
             'status' => 'updated'

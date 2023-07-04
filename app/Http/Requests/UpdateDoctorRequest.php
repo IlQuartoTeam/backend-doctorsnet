@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Faker\Guesser\Name;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
@@ -26,6 +27,8 @@ class UpdateDoctorRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => 'required',
+            'surname' => 'required',
             'phone' => 'nullable',
             'profile_image_url' => 'url',
             'address' => 'required',
@@ -38,6 +41,8 @@ class UpdateDoctorRequest extends FormRequest
 
     public function messages() {
         return [
+            'name.required' => 'Inserisci un nome',
+            'surname.required' => 'Inserisci un cognome',
             'city.required' => 'La città è obbligatoria',
             'address.required' => "L'indirizzo è obbligatorio",
             "profile_image_url" => "Link non valido"
