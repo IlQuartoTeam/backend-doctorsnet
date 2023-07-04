@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
+            SpecializationsSeeder::class,
             DoctorsSeeder::class,
             MessagesSeeder::class,
             ReviewsSeeder::class,
-            SpecializationsSeeder::class,
             SubscriptionsSeeder::class,
             ReviewsSeeder::class,
             SynchSeeder::class

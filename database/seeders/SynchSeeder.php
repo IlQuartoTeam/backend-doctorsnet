@@ -25,7 +25,6 @@ class SynchSeeder extends Seeder
             //   dd($subscription->days_duration);
             $doctor->subscriptions()->attach($randID, ['end_date' => Carbon::now()->addDays($subscription->days_duration)]);
             }
-            $doctor->specializations()->attach(rand(1, 25));
         }}
 
 }
