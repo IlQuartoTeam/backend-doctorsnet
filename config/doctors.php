@@ -3,22 +3,22 @@ $male1 = "https://shorturl.at/tBEO2";
 $male2 = "https://shorturl.at/rsW34";
 $male3 = "https://shorturl.at/jnryG";
 $male4 = "https://shorturl.at/yZ568";
-$male5 = 'https://prnt.sc/b5fdkzX8Vmti';
-$male6 = 'https://prnt.sc/ti9hl0DOVPxC';
-$male7 = 'https://prnt.sc/YyszhqrGO0Qu';
-$male8 = 'https://prnt.sc/hVpPZ3gNSmyY';
-$male9 = 'https://prnt.sc/Q8v-sFLwpBhA';
-$male10 = 'https://prnt.sc/XFopLLqofor4';
+$male5 = 'https://shorturl.at/hrHVW';
+$male6 = 'https://shorturl.at/cehk4';
+$male7 = 'https://t.ly/1IC-m';
+$male8 = 'https://t.ly/uaXX';
+$male9 = 'https://t.ly/Q9IOc';
+$male10 = 'https://t.ly/W8XG';
 $female1 = "https://t.ly/djRd";
 $female2 = "https://t.ly/_OPc";
 $female3 = "https://t.ly/8Nyz";
-$female4 = "https://prnt.sc/O6vKq-xYdYV0";
-$female5 = "https://prnt.sc/ta-T-46oCXaI";
-$female6 = "https://prnt.sc/danUZlL-A8fK";
-$female7 = "https://prnt.sc/0SEQcFD2ysfa";
-$female8 = "https://prnt.sc/1-xXURfqaDRB";
-$female9 = "https://prnt.sc/u-SdbE04inCR";
-$female10 = "https://prnt.sc/B4GjgE991F4G";
+$female4 = "https://shorturl.at/lX157";
+$female5 = "https://shorturl.at/htvNR";
+$female6 = "https://shorturl.at/cdtCJ";
+$female7 = "https://shorturl.at/gruCK";
+$female8 = "https://shorturl.at/bgtI8";
+$female9 = "https://shorturl.at/svwG6";
+$female10 = "https://t.ly/fSizG";
 
 return [
     /**
