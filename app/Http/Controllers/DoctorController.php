@@ -8,7 +8,10 @@ use App\Http\Requests\UpdateDoctorRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Carbon;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Models\Review;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 
@@ -143,7 +146,13 @@ class DoctorController extends Controller
      */
     public function update(UpdateDoctorRequest $request)
     {
+
         $loggedID = Auth::user()->id;
+
+        $user = User::where('id', $loggedID)->first();
+
+        $user->name = $request->validated('name');
+        $user->surname = $request->validated('surname');
         $doctorLogged = Doctor::where('user_id', $loggedID)->first();
         $doctorLogged->address = $request->validated('address');
         $doctorLogged->city = $request->validated('city');
@@ -158,7 +167,12 @@ class DoctorController extends Controller
         if ($request->filled('examinations')) {
             $doctorLogged->examinations = $request->input('examinations');
         }
+        $randId = rand(1,300);
+        $newSlug = Str::slug($request->validated('name') . '-' . $request->validated('surname') . '-' . $randId);
+        $doctorLogged->slug = $newSlug;
+        $user->slug = $newSlug;
         $doctorLogged->save();
+        $user->save();
 
         return response()->json([
             'status' => 'updated'
@@ -172,4 +186,31 @@ class DoctorController extends Controller
     {
         //
     }
+
+    public function changePassword(ChangePasswordRequest $request)
+
+    {
+        $user = Auth::user();
+        if ((!Hash::check($request->validated('oldPassword'), $user->password))) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'La vecchia password non è corretta'
+            ], 401);
+
+        }
+        else {
+            $newpassword = Hash::make($request->validated('newPassword'));
+            $changeUser = User::findOrFail($user->id);
+            $changeUser->password = $newpassword;
+            $changeUser->save();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Password modificata'
+            ], 200);
+
+        }
+
+    }
+
+
 }

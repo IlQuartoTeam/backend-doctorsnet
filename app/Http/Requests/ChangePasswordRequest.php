@@ -2,14 +2,13 @@
 
 namespace App\Http\Requests;
 
-use Faker\Guesser\Name;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateDoctorRequest extends FormRequest
+class ChangePasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,25 +26,17 @@ class UpdateDoctorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'surname' => 'required',
-            'phone' => 'nullable',
-            'profile_image_url' => 'url',
-            'address' => 'required',
-            'city' => 'required',
-            'examinations' => 'nullable',
-
+            'oldPassword' => 'required',
+            'newPassword' => 'required|min:8'
 
         ];
     }
 
     public function messages() {
         return [
-            'name.required' => 'Inserisci un nome',
-            'surname.required' => 'Inserisci un cognome',
-            'city.required' => 'La città è obbligatoria',
-            'address.required' => "L'indirizzo è obbligatorio",
-            "profile_image_url" => "Link non valido"
+            'oldPassword.required' => 'La vecchia password è richiesta',
+            'newPassword.email' => 'La nuova password è richiesta',
+            'newPassword.min' => 'La nuova password deve essere di almeno :min caratteri'
 
 
         ];
@@ -54,7 +45,7 @@ class UpdateDoctorRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
-            response()->json(['errors' => $validator->errors()], JsonResponse::HTTP_BAD_REQUEST)
+            response()->json(['errors' => $validator->errors()], JsonResponse::HTTP_UNAUTHORIZED)
         );
     }
 }
