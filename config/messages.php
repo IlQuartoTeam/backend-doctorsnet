@@ -1,85 +1,65 @@
 <?php
 // Creo l'array dei messaggi con 15 elementi
 return [
-  [
-    "fullname" => "Marco Rossi",
-    "email" => "marco.rossi@gmail.com",
-    "text" => "Salve, sono Marco Rossi. Vorrei prenotare un appuntamento per una visita specialistica. Grazie."
-  ],
-  [
-    "fullname" => "Anna Bianchi",
-    "email" => "anna.bianchi@outlook.com",
-    "text" => "Buongiorno, mi chiamo Anna Bianchi. Desidero fissare una visita specialistica. Cordiali saluti."
-  ],
-  [
-    "fullname" => "Luca Verdi",
-    "email" => "luca.verdi@yahoo.com",
-    "text" => "Buonasera, il mio nome è Luca Verdi. Ho bisogno di una visita specialistica. La ringrazio anticipatamente."
-  ],
-  [
-    "fullname" => "Giulia Esposito",
-    "email" => "giulia.esposito@libero.it",
-    "text" => "Gentile dottore/dottoressa, sono Giulia Esposito. Le scrivo per chiedere una visita specialistica. Distinti saluti."
-  ],
-  [
-    "fullname" => "Matteo Ferrari",
-    "email" => "matteo.ferrari@alice.it",
-    "text" => "Caro medico, mi presento: sono Matteo Ferrari. Le richiedo una visita specialistica. La saluto cordialmente."
-  ],
-  [
-    "fullname" => "Sara Russo",
-    "email" => "sara.russo@gmail.com",
-    "text" => "Egregio dottore, mi chiamo Sara Russo. Le vorrei chiedere una visita specialistica. La ringrazio molto."
-  ],
-  [
-    "fullname" => "Laura Colombo",
-    "email" => "laura.colombo@outlook.com",
-    "text" => "Ciao, sono Laura Colombo. Mi piacerebbe avere una visita specialistica. Ti ringrazio tanto."
-  ],
-  [
-    "fullname" => "Alessandro Ricci",
-    "email" => "alessandro.ricci@yahoo.com",
-    "text" => "Buon pomeriggio, mi presento: sono Alessandro Ricci. Mi serve una visita specialistica. Ti saluto affettuosamente."
-  ],
-  [
-    "fullname" => "Chiara Marino",
-    "email" => "chiara.marino@libero.it",
-    "text" => "Buon giorno, il mio nome è Chiara Marino. Ti scrivo per richiedere una visita specialistica. Ti saluto con stima."
-  ],
-  [
-    "fullname" => "Marco Bianchi",
-    "email" => "marco.bianchi@alice.it",
-    "text" => "Salve, mi chiamo Marco Bianchi. Ti vorrei prenotare una visita specialistica. Ti ringrazio di cuore."
-  ],
-  [
-    "fullname" => "Anna Ferrari",
-    "email" => "anna.ferrari@gmail.com",
-    "text" => "Buonasera, sono Anna Ferrari. Ti chiedo gentilmente una visita specialistica. Ti saluto con simpatia."
-  ],
-  [
-    "fullname" => "Laura Colombo",
-    "email" => "laura.colombo@outlook.com",
-    "text" => "Ciao, sono Laura Colombo. Mi piacerebbe avere una visita specialistica. Ti ringrazio tanto."
-  ],
-  [
-    "fullname" => "Alessandro Ricci",
-    "email" => "alessandro.ricci@yahoo.com",
-    "text" => "Buon pomeriggio, mi presento: sono Alessandro Ricci. Mi serve una visita specialistica. Ti saluto affettuosamente."
-  ],
-  [
-    "fullname" => "Chiara Marino",
-    "email" => "chiara.marino@libero.it",
-    "text" => "Buon giorno, il mio nome è Chiara Marino. Ti scrivo per richiedere una visita specialistica. Ti saluto con stima."
-  ],
-  [
-    "fullname" => "Marco Bianchi",
-    "email" => "marco.bianchi@alice.it",
-    "text" => "Salve, mi chiamo Marco Bianchi. Ti vorrei prenotare una visita specialistica. Ti ringrazio di cuore."
-  ],
-  [
-    "fullname" => "Anna Ferrari",
-    "email" => "anna.ferrari@gmail.com",
-    "text" => "Buonasera, sono Anna Ferrari. Ti chiedo gentilmente una visita specialistica. Ti saluto con simpatia."
-  ],
+    [
+        "fullname" => "Paolo Bianchi",
+        "email" => "paolo.bianchi@gmail.com",
+        "text" => "Salve dottore, vorrei prenotare una visita per mia figlia."
+    ],
+    [
+        "fullname" => "Giorgia Rossi",
+        "email" => "giorgia.rossi@libero.it",
+        "text" => "Buongiorno dottore, sono interessata a un consulto per un problema di allergia."
+    ],
+    [
+        "fullname" => "Federico Russo",
+        "email" => "federico.russo@alice.it",
+        "text" => "Gentile dottore, avrei bisogno di una visita specialistica per un dolore persistente."
+    ],
+    [
+        "fullname" => "Chiara Ferrari",
+        "email" => "chiara.ferrari@icloud.com",
+        "text" => "Salve dottore, vorrei prenotare una visita di controllo per mia madre anziana."
+    ],
+    [
+        "fullname" => "Alessia Romano",
+        "email" => "alessia.romano@gmail.com",
+        "text" => "Buongiorno dottore, desidero richiedere un consulto per un disturbo digestivo."
+    ],
+    [
+        "fullname" => "Matteo Esposito",
+        "email" => "matteo.esposito@libero.it",
+        "text" => "Salve dottore, vorrei chiedere la sua disponibilità per una visita di controllo."
+    ],
+    [
+        "fullname" => "Valentina Russo",
+        "email" => "valentina.russo@alice.it",
+        "text" => "Buongiorno dottore, ho bisogno di un consulto per un problema di pressione alta."
+    ],
+    [
+        "fullname" => "Lorenzo Ferrari",
+        "email" => "lorenzo.ferrari@gmail.com",
+        "text" => "Gentile dottore, vorrei prenotare una visita specialistica per un problema ortopedico."
+    ],
+    [
+        "fullname" => "Elena Romano",
+        "email" => "elena.romano@icloud.com",
+        "text" => "Salve dottore, desidero richiedere un consulto per un disturbo respiratorio."
+    ],
+    [
+        "fullname" => "Simone Bianchi",
+        "email" => "simone.bianchi@libero.it",
+        "text" => "Buongiorno dottore, vorrei prenotare una visita di controllo per mia moglie."
+    ],
+    [
+        "fullname" => "Sara Esposito",
+        "email" => "sara.esposito@gmail.com",
+        "text" => "Salve dottore, avrei bisogno di una consulenza medica per un problema di salute."
+    ],
+    [
+        "fullname" => "Giovanni Ferrari",
+        "email" => "giovanni.ferrari@alice.it",
+        "text" => "Buongiorno dottore, vorrei richiedere un consulto per un disturbo digestivo."
+    ]
 
   ];
