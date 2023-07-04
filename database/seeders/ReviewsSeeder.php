@@ -40,13 +40,15 @@ class ReviewsSeeder extends Seeder
         ];
 
         for ($i = 1; $i <= 100; $i++) {
-            for ($x = 1; $x < rand(1,6); $x++) {
+            $alreadyUsed = [];
+
+            for ($x = 1; $x < rand(2,6); $x++) {
                 $randreview = array_rand($persReviews);
-                $alreadyUsed = [];
                 array_push($alreadyUsed, $randreview);
                 while (in_array($randreview, $alreadyUsed)) {
                     $randreview = array_rand($persReviews);
                 }
+
             DB::table('reviews')->insert([
                 'doctor_id' => $i,
                 'email' => $faker->email(),
