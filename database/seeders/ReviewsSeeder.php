@@ -39,7 +39,7 @@ class ReviewsSeeder extends Seeder
 
         ];
 
-        for ($i = 1; $i < 100; $i++) {
+        for ($i = 1; $i <= 100; $i++) {
             for ($x = 1; $x < rand(1,6); $x++) {
                 $randreview = array_rand($persReviews);
                 $alreadyUsed = [];

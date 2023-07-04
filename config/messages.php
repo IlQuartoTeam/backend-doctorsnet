@@ -1,6 +1,6 @@
 <?php
 // Creo l'array dei messaggi con 15 elementi
-$messages = [
+return [
   [
     "fullname" => "Marco Rossi",
     "email" => "marco.rossi@gmail.com",
