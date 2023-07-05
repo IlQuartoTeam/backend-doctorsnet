@@ -13,6 +13,7 @@ use App\Models\Review;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class DoctorController extends Controller
@@ -104,10 +105,11 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        $doctor->load('specializations');
+        $doctor->load('specializations', 'reviews');
 
         $allratings = [];
         $user = User::where('id', $doctor->user_id)->first();
+        $doctor->email = $user->email;
         $doctor->name = $user->name;
         $doctor->surname = $user->surname;
         $doctor->slug = $user->slug;
@@ -210,6 +212,18 @@ class DoctorController extends Controller
 
         }
 
+    }
+
+    public function uploadProfile(Request $request) {
+        $loggedID = Auth::user()->id;
+
+        $doctor = Doctor::where('user_id', $loggedID)->first();
+
+   //     $img_path = Storage::disk('public')->put('uploads', $['image']);
+
+    //    $doctor->profile_image_url = $img_path;
+
+        $doctor->save();
     }
 
 
