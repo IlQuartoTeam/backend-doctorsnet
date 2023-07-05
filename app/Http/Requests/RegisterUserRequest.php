@@ -31,10 +31,10 @@ class RegisterUserRequest extends FormRequest
             'password' => 'required|string|min:8',
             'address' => 'required',
             'city' => 'required' ,
-            'specialization' => 'required|exists:specializations,id',
+            'specializations' => 'required|exists:specializations,id',
             'phone' => 'nullable',
             'lat' => 'required',
-            'long' => 'required'
+            'long' => 'required',
 
         ];
     }
@@ -53,7 +53,7 @@ class RegisterUserRequest extends FormRequest
             'specialization.required' => 'La specializzazione è obbligatoria',
             'city.required' => 'La città è obbligatoria',
             'address.required' => "L'indirizzo è obbligatorio",
-            'specialization.exists' => 'Specializzazione non presente',
+            'specializations.exists' => 'Specializzazione non presente',
 
 
         ];
