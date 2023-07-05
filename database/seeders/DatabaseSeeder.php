@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             ReviewsSeeder::class,
             SubscriptionsSeeder::class,
             ReviewsSeeder::class,
-            SynchSeeder::class
+            SynchSeeder::class,
         ]);
     }
 }

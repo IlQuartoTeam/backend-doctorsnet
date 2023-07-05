@@ -218,19 +218,25 @@ class DoctorController extends Controller
     }
 
     public function uploadProfile(Request $request) {
+
         $loggedID = Auth::user()->id;
 
         $doctor = Doctor::where('user_id', $loggedID)->first();
 
-        $img_path = Storage::disk('public')->put('uploads', $request->file('image'));
+
+        $img_path = 'http://127.0.0.1:8000/storage/' . Storage::disk('public')->put('uploads', $request->file('image'));
+
+
+
 
         $doctor->profile_image_url = $img_path;
 
         $doctor->save();
 
-        return response()->json([
-            'imagelink' => $img_path
-        ]);
+        $responseData = ['imagelink' => $img_path];
+
+        return response()->json($responseData, 200, [], JSON_UNESCAPED_SLASHES);
+
     }
 
 
