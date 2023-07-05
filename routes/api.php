@@ -33,3 +33,4 @@ Route::resource('doctors', DoctorController::class)->parameters(['doctors' => 'd
 Route::resource('doctors.reviews', ReviewController::class)->only(['store']);
 Route::match(['put', 'patch'], '/user/edit', [DoctorController::class, 'update'])->middleware('auth:sanctum');
 Route::patch('/user/password', [DoctorController::class, 'changePassword'])->middleware('auth:sanctum');
+Route::put('/user/image', [DoctorController::class, 'uploadProfile'])->middleware('auth:sanctum');

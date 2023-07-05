@@ -34,6 +34,7 @@ class UpdateDoctorRequest extends FormRequest
             'address' => 'required',
             'city' => 'required',
             'examinations' => 'nullable',
+            'specializations' => 'required|exists:specializations,id',
 
 
         ];
@@ -45,7 +46,9 @@ class UpdateDoctorRequest extends FormRequest
             'surname.required' => 'Inserisci un cognome',
             'city.required' => 'La città è obbligatoria',
             'address.required' => "L'indirizzo è obbligatorio",
-            "profile_image_url" => "Link non valido"
+            "profile_image_url" => "Link non valido",
+            'specializations.exists' => 'Specializzazione non presente',
+
 
 
         ];

@@ -176,6 +176,9 @@ class DoctorController extends Controller
         $doctorLogged->save();
         $user->save();
 
+        $doctorLogged->specializations()->synch($request->validated('specializations'));
+
+
         return response()->json([
             'status' => 'updated'
         ]);
@@ -219,11 +222,15 @@ class DoctorController extends Controller
 
         $doctor = Doctor::where('user_id', $loggedID)->first();
 
-   //     $img_path = Storage::disk('public')->put('uploads', $['image']);
+        $img_path = Storage::disk('public')->put('uploads', $request->file('image'));
 
-    //    $doctor->profile_image_url = $img_path;
+        $doctor->profile_image_url = $img_path;
 
         $doctor->save();
+
+        return response()->json([
+            'imagelink' => $img_path
+        ]);
     }
 
 
