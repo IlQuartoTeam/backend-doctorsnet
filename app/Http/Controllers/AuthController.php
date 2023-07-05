@@ -33,6 +33,7 @@ class AuthController extends Controller
        $doctor = new Doctor();
        $doctor->user_id = $user->id;
        $doctor->slug = $user->slug;
+       $doctor->profile_image_url = 'https://i.ibb.co/5YV5fRf/placeholder-doctor-1382739544.png';
        $doctor->address = $request->validated('address');
        $doctor->city = $request->validated('city');
        $doctor->address_lat = $request->validated('lat');
