@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
+use App\Http\Requests\AddExperienceRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Experience;
 use Illuminate\Support\Carbon;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Models\Review;
@@ -236,6 +238,29 @@ class DoctorController extends Controller
         $responseData = ['imagelink' => $img_path];
 
         return response()->json($responseData, 200, [], JSON_UNESCAPED_SLASHES);
+
+    }
+
+    public function addExperience(AddExperienceRequest $request) {
+        $loggedID = Auth::user()->id;
+
+        $newExp = new Experience();
+        $newExp->doctor_id = $loggedID;
+        $newExp->name = $request->validated('name');
+        $newExp->type = $request->validated('type');
+        $newExp->start_date = $request->validated('start_date');
+        if ($request->has('end_date')) {
+            $newExp->end_date = $request->validated('end_date');
+        }
+        $newExp->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Esperienza aggiunta'
+        ], 200);
+
+
+
 
     }
 
