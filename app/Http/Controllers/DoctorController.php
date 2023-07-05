@@ -33,12 +33,12 @@ class DoctorController extends Controller
         if ($city) {
             $doctors = Doctor::where('city', $city)->with(['specializations', 'subscriptions' => function ($query) {
                 $query->where('end_date', '>', Carbon::now());
-            }, 'reviews'])->paginate(10);
+            }, 'reviews', 'experiences'])->paginate(10);
             $doctors->appends(['city' => $city]);
         } else {
             $doctors = Doctor::latest()->with(['specializations', 'subscriptions' => function ($query) {
                 $query->where('end_date', '>', Carbon::now());
-            }, 'reviews'])->paginate(10);
+            }, 'reviews', 'experiences'])->paginate(10);
         }
 
 
