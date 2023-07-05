@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Experience;
 use App\Http\Requests\StoreExperienceRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateExperienceRequest;
 
 class ExperienceController extends Controller
@@ -61,6 +62,22 @@ class ExperienceController extends Controller
      */
     public function destroy(Experience $Experience)
     {
-        //
-    }
+
+        $loggedID = Auth::user()->id;
+        if ($Experience->doctor_id != $loggedID) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Richiesta impropria'
+            ], 401);
+        }
+
+        else {
+
+        $Experience->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Esperienza cancellata'
+        ], 200);
+    }}
 }
