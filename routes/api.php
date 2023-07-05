@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SpecializationController;
 use App\Models\Doctor;
@@ -35,4 +36,9 @@ Route::match(['put', 'patch'], '/user/edit', [DoctorController::class, 'update']
 Route::patch('/user/password', [DoctorController::class, 'changePassword'])->middleware('auth:sanctum');
 Route::post('/user/image', [DoctorController::class, 'uploadProfile'])->middleware('auth:sanctum');
 Route::post('/user/experiences', [DoctorController::class, 'addExperience'])->middleware('auth:sanctum');
+Route::resource('experiences', ExperienceController::class)->only(['delete']);
+Route::post('/user/examinations', [DoctorController::class, 'editExaminations'])->middleware('auth:sanctum');
+
+
+
 

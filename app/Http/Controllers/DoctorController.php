@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Experience;
 use Illuminate\Support\Carbon;
 use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\EditExaminationsRequest;
 use App\Models\Review;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
@@ -164,13 +165,7 @@ class DoctorController extends Controller
             $doctorLogged->phone = $request->input('phone');
         }
 
-        if ($request->filled('profile_image_url')) {
-            $doctorLogged->profile_image_url = $request->input('profile_image_url');
-        }
 
-        if ($request->filled('examinations')) {
-            $doctorLogged->examinations = $request->input('examinations');
-        }
         $randId = rand(1,300);
         $newSlug = Str::slug($request->validated('name') . '-' . $request->validated('surname') . '-' . $randId);
         $doctorLogged->slug = $newSlug;
@@ -263,6 +258,22 @@ class DoctorController extends Controller
 
 
     }
+
+    public function editExaminations(EditExaminationsRequest $request) {
+
+        $loggedID = Auth::user()->id;
+        $doctor = Doctor::where('user_id', $loggedID)->first();
+        $doctor->examinations = $request->validated('examinations');
+        $doctor->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Esperienze modificate'
+        ], 200);
+
+    }
+
+
 
 
 }
