@@ -176,7 +176,7 @@ class DoctorController extends Controller
         $doctorLogged->save();
         $user->save();
 
-        $doctorLogged->specializations()->synch($request->validated('specializations'));
+        $doctorLogged->specializations()->sync($request->validated('specializations'));
 
 
         return response()->json([
