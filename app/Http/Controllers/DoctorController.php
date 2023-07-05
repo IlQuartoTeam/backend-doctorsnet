@@ -129,13 +129,13 @@ class DoctorController extends Controller
             $average = $sum / $count;
             $doctor->average_rating = round($average, 1);
 
-            return response()->json(
-                [
-                    'success' => true,
-                    'results' => $doctor
-                ]
-            );
         }
+        return response()->json(
+            [
+                'success' => true,
+                'results' => $doctor
+            ]
+        );
     }
 
     /**
