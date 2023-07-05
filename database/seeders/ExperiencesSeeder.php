@@ -20,20 +20,37 @@ class ExperiencesSeeder extends Seeder
 
         foreach ($numbers as $doctor_id) {
             $randNumber = rand(0, count($degrees) -1);
+
             DB::table('experiences')->insert([
                 'doctor_id' => $doctor_id,
-                'name' => $degrees[$randNumber]->name,
+                'name' => $degrees[$randNumber]['name'],
                 'type' => 'education',
-                'start_date' => $degrees[$randNumber]->start_date,
-                'end_date' => $degrees[$randNumber]->end_date
+                'start_date' => $degrees[$randNumber]['start_date'],
+                'end_date' => $degrees[$randNumber]["end_date"]
             ]);
-            DB::table('experiences')->insert([
-                'doctor_id' => $doctor_id,
-                'name' => $works[$randNumber]->name,
-                'type' => 'work',
-                'start_date' => $works[$randNumber]->start_date,
-                'end_date' => $works[$randNumber]->end_date
-            ]);
+
+            $randNumber1 = rand(0, count($degrees) -1);
+
+            if($works[$randNumber1]['end_date'] != '')
+            {
+                DB::table('experiences')->insert([
+                    'doctor_id' => $doctor_id,
+                    'name' => $works[$randNumber1]['name'],
+                    'type' => 'work',
+                    'start_date' => $works[$randNumber1]['start_date'],
+                    'end_date' => $works[$randNumber1]['end_date']
+                ]);
+            }
+            else
+            {
+                DB::table('experiences')->insert([
+                    'doctor_id' => $doctor_id,
+                    'name' => $works[$randNumber1]['name'],
+                    'type' => 'work',
+                    'start_date' => $works[$randNumber1]['start_date'],
+                ]);
+            }
+
         }
     }
 }
