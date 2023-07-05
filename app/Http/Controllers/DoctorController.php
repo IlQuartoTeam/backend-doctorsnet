@@ -161,6 +161,8 @@ class DoctorController extends Controller
         $doctorLogged = Doctor::where('user_id', $loggedID)->first();
         $doctorLogged->address = $request->validated('address');
         $doctorLogged->city = $request->validated('city');
+        $doctorLogged->address_lat = $request->address_lat;
+        $doctorLogged->address_long = $request->address_long;
         if ($request->filled('phone')) {
             $doctorLogged->phone = $request->input('phone');
         }
