@@ -458,7 +458,7 @@ return [
         "phone" => ' +393340123456 ',
         "profile_image_url" => $female7,
         "address" => ' Via dei Condotti ,130 ',
-        "city" => ' Roma ',
+        "city" => 'Roma',
         "lat" => 41.9058,
         "long" => 12.4794
     ],
@@ -466,7 +466,7 @@ return [
         "phone" => ' +393341234567 ',
         "profile_image_url" => $male8,
         "address" => ' Via Margutta ,140 ',
-        "city" => ' Roma ',
+        "city" => 'Roma',
         "lat" => 41.9086,
         "long" => 12.4769
     ],
@@ -474,7 +474,7 @@ return [
         "phone" => ' +393342345678 ',
         "profile_image_url" => $female8,
         "address" => ' Via del Boschetto ,150 ',
-        "city" => ' Roma ',
+        "city" => 'Roma',
         "lat" => 41.8986,
         "long" => 12.4906
     ],
@@ -482,7 +482,7 @@ return [
         "phone" => ' +393343456789 ',
         "profile_image_url" => $male9,
         "address" => ' Via dei Giubbonari ,160 ',
-        "city" => ' Roma ',
+        "city" => 'Roma',
         "lat" => 41.8951,
         "long" => 12.4725
     ],
@@ -490,7 +490,7 @@ return [
         "phone" => ' +393344567890 ',
         "profile_image_url" => $female9,
         "address" => ' Via del Pellegrino ,170 ',
-        "city" => ' Roma ',
+        "city" => 'Roma',
         "lat" => 41.8960,
         "long" => 12.4713
     ],
@@ -743,7 +743,7 @@ return [
         "phone" => ' +393336789012 ',
         "profile_image_url" => $male5,
         "address" => ' Via della Spiga ,80 ',
-        "city" => ' Milano ',
+        "city" => 'Milano',
         "lat" => 45.4690,
         "long" => 9.1963
     ],
@@ -751,7 +751,7 @@ return [
         "phone" => ' +393337890123 ',
         "profile_image_url" => $female5,
         "address" => ' Corso Magenta ,90 ',
-        "city" => ' Milano ',
+        "city" => 'Milano',
         "lat" => 45.4652,
         "long" => 9.1741
     ],
@@ -759,7 +759,7 @@ return [
         "phone" => ' +393338901234 ',
         "profile_image_url" => $male6,
         "address" => ' Via Manzoni ,100 ',
-        "city" => ' Milano ',
+        "city" => 'Milano',
         "lat" => 45.4702,
         "long" => 9.1957
     ],
@@ -767,7 +767,7 @@ return [
         "phone" => ' +393339012345 ',
         "profile_image_url" => $female6,
         "address" => ' Via Sant\'Andrea ,110 ',
-        "city" => ' Milano ',
+        "city" => 'Milano',
         "lat" => 45.4693,
         "long" => 9.1960
     ],
@@ -775,7 +775,7 @@ return [
         "phone" => ' +393340123456 ',
         "profile_image_url" => $male7,
         "address" => ' Via Borgospesso ,120 ',
-        "city" => ' Milano ',
+        "city" => 'Milano',
         "lat" => 45.4697,
         "long" => 9.1976
     ],
@@ -783,7 +783,7 @@ return [
         "phone" => ' +393341234567 ',
         "profile_image_url" => $female7,
         "address" => ' Via Santo Spirito ,130 ',
-        "city" => ' Milano ',
+        "city" => 'Milano',
         "lat" => 45.4688,
         "long" => 9.1971
     ],
@@ -791,7 +791,7 @@ return [
         "phone" => ' +393342345678 ',
         "profile_image_url" => $male8,
         "address" => ' Via Verri ,140 ',
-        "city" => ' Milano ',
+        "city" => 'Milano',
         "lat" => 45.4680,
         "long" => 9.1954
     ],
@@ -799,7 +799,7 @@ return [
         "phone" => ' +393343456789 ',
         "profile_image_url" => $female8,
         "address" => ' Via Bigli ,150 ',
-        "city" => ' Milano ',
+        "city" => 'Milano',
         "lat" => 45.4682,
         "long" => 9.1942
     ],
@@ -807,7 +807,7 @@ return [
         "phone" => ' +393344567890 ',
         "profile_image_url" => $male9,
         "address" => ' Via Bagutta ,160 ',
-        "city" => ' Milano ',
+        "city" => 'Milano',
         "lat" => 45.4692,
         "long" => 9.1946
     ],
@@ -815,7 +815,7 @@ return [
         "phone" => ' +393345678901 ',
         "profile_image_url" => $female9,
         "address" => ' Via Durini ,170 ',
-        "city" => ' Milano ',
+        "city" => 'Milano',
         "lat" => 45.4631,
         "long" => 9.1968
     ],
