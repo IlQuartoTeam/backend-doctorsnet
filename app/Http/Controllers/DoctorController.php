@@ -9,6 +9,7 @@ use App\Http\Requests\AddExperienceRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Experience;
+use App\Models\Specialization;
 use Illuminate\Support\Carbon;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\EditExaminationsRequest;
@@ -29,8 +30,34 @@ class DoctorController extends Controller
         $allratings = [];
 
         $city = $request->input('city');
+        $specializationName = $request->input('specialization');
 
-        if ($city) {
+        if ($request->filled('specialization') && $request->filled('city')) {
+            $specializationDB = Specialization::where('name', $specializationName)->first();
+            $specializationID = $specializationDB->id;
+            $doctors = Doctor::whereHas('specializations', function($q) use ($specializationID) {
+                $q->where('doctor_specialization.specialization_id', $specializationID);})->where('city', $city)->with(['specializations', 'subscriptions' => function ($query) {
+                    $query->where('end_date', '>', Carbon::now());
+                }, 'reviews', 'experiences'])->paginate(10);
+
+        }
+
+      else if ($request->filled('specialization')) {
+            $specializationDB = Specialization::where('name', $specializationName)->first();
+            $specializationID = $specializationDB->id;
+            $doctors = Doctor::whereHas('specializations', function($q) use ($specializationID) {
+                $q->where('doctor_specialization.specialization_id', $specializationID);})->with(['specializations', 'subscriptions' => function ($query) {
+                    $query->where('end_date', '>', Carbon::now());
+                }, 'reviews', 'experiences'])->paginate(10);
+
+            /* ->with(['specializations', 'subscriptions' => function ($query) {
+                $query->where('end_date', '>', Carbon::now());
+            }, 'reviews', 'experiences'])->paginate(10);
+            $doctors->appends(['city' => $city]); */
+
+        }
+
+        else if ($city) {
             $doctors = Doctor::where('city', $city)->with(['specializations', 'subscriptions' => function ($query) {
                 $query->where('end_date', '>', Carbon::now());
             }, 'reviews', 'experiences'])->paginate(10);
