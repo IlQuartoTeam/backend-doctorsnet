@@ -29,73 +29,72 @@ class DoctorController extends Controller
     public function index(Request $request)
     {
         $doctorsQuery = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')
-        ->join('reviews', 'reviews.doctor_id', '=', 'doctors.id')
-        ->select('doctors.*', 'doctor_subscription.end_date', DB::raw('AVG(reviews.rating) as average_rating'))
-        ->with(['specializations', 'reviews', 'experiences'])
-        ->groupBy('doctors.id')
-        ->orderBy('doctor_subscription.end_date', 'desc');
+            ->join('reviews', 'reviews.doctor_id', '=', 'doctors.id')
+            ->select('doctors.*', 'doctor_subscription.end_date', DB::raw('AVG(reviews.rating) as average_rating'))
+            ->with(['specializations', 'reviews', 'experiences'])
+            ->groupBy('doctors.id')
+            ->orderBy('doctor_subscription.end_date', 'desc');
 
-    $city = $request->input('city');
-    $specializationName = $request->input('specialization');
-    $vote = $request->input('vote');
-    $numRec = $request->input('nReviews');
-
-
-
-    if ($request->filled('city')) {
-        $doctorsQuery->where('city', $city);
-    }
+        $city = $request->input('city');
+        $specializationName = $request->input('specialization');
+        $vote = $request->input('vote');
+        $numRec = $request->input('nReviews');
 
 
 
-    if ($request->filled('nReviews')) {
-
-        $doctorsQuery->select('doctors.*', 'doctor_subscription.end_date', DB::raw('AVG(reviews.rating) as average_rating'), DB::raw('COUNT(reviews.id) as reviews_number'))->having('reviews_number', '>=', $numRec);
-
-    }
-
-    if ($request->filled('specialization')) {
-        $specializationDB = Specialization::where('name', $specializationName)->first();
-        $specializationID = $specializationDB->id;
-        $doctorsQuery->whereHas('specializations', function ($q) use ($specializationID) {
-            $q->where('doctor_specialization.specialization_id', $specializationID);
-        });
-    }
-
-    if ($request->filled('vote')) {
-        $doctorsQuery->having('average_rating', '>', $vote);
-    }
-
-    $doctors = $doctorsQuery->paginate(10);
-
-    $doctors->makeHidden(['user_id', 'created_at', 'updated_at', 'subscriptions', 'subscription_id', 'doctor_id', 'end_date']);
-
-    foreach ($doctors as $doctor) {
-        $user = User::where('id', $doctor->user_id)->first();
-        $doctor->name = $user->name;
-        $rounded_rating = round($doctor->average_rating, 2);
-        $doctor->average_rating = $rounded_rating;
-        $doctor->surname = $user->surname;
-        $doctor->slug = $user->slug;
-
-        if ($doctor->end_date > Carbon::now()) {
-            $doctor->premium = true;
-        } else {
-            $doctor->premium = false;
+        if ($request->filled('city')) {
+            $doctorsQuery->where('city', $city);
         }
-    }
 
-    if ($doctors->isEmpty()) {
-        return response()->json([
-            'success' => false,
-            'results' => 'No doctors found'
-        ], 404);
-    } else {
-        return response()->json([
-            'success' => true,
-            'results' => $doctors
-        ]);
-    }
+
+
+        if ($request->filled('nReviews')) {
+
+            $doctorsQuery->select('doctors.*', 'doctor_subscription.end_date', DB::raw('AVG(reviews.rating) as average_rating'), DB::raw('COUNT(reviews.id) as reviews_number'))->having('reviews_number', '>=', $numRec);
+        }
+
+        if ($request->filled('specialization')) {
+            $specializationDB = Specialization::where('name', $specializationName)->first();
+            $specializationID = $specializationDB->id;
+            $doctorsQuery->whereHas('specializations', function ($q) use ($specializationID) {
+                $q->where('doctor_specialization.specialization_id', $specializationID);
+            });
+        }
+
+        if ($request->filled('vote')) {
+            $doctorsQuery->having('average_rating', '>=', $vote);
+        }
+
+        $doctors = $doctorsQuery->paginate(10);
+
+        $doctors->makeHidden(['user_id', 'created_at', 'updated_at', 'subscriptions', 'subscription_id', 'doctor_id', 'end_date']);
+
+        foreach ($doctors as $doctor) {
+            $user = User::where('id', $doctor->user_id)->first();
+            $doctor->name = $user->name;
+            $rounded_rating = round($doctor->average_rating, 2);
+            $doctor->average_rating = $rounded_rating;
+            $doctor->surname = $user->surname;
+            $doctor->slug = $user->slug;
+
+            if ($doctor->end_date > Carbon::now()) {
+                $doctor->premium = true;
+            } else {
+                $doctor->premium = false;
+            }
+        }
+
+        if ($doctors->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'results' => 'No doctors found'
+            ], 404);
+        } else {
+            return response()->json([
+                'success' => true,
+                'results' => $doctors
+            ]);
+        }
     }
 
     /**
@@ -276,5 +275,11 @@ class DoctorController extends Controller
             'status' => 'success',
             'message' => 'Esperienze modificate'
         ], 200);
+    }
+
+    public function premiumDoctors(Request $request) {
+
+
+
     }
 }
