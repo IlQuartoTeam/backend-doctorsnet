@@ -34,74 +34,82 @@ class DoctorController extends Controller
         $specializationName = $request->input('specialization');
         $vote = $request->input('vote');
 
-        if ($request->filled('specialization') && $request->filled('city')) {
+        if ($request->filled('specialization') && $request->filled('city') && $request->filled('vote')) {
+
             $specializationDB = Specialization::where('name', $specializationName)->first();
             $specializationID = $specializationDB->id;
-            $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->select('doctors.*', 'doctor_subscription.end_date')->whereHas('specializations', function($q) use ($specializationID) {
-                $q->where('doctor_specialization.specialization_id', $specializationID);})->where('city', $city)->with(['specializations', 'reviews', 'experiences'])->orderBy('doctor_subscription.end_date', 'desc')->paginate(10);
+            $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->join('reviews', 'reviews.doctor_id', '=', 'doctors.id')->select('doctors.*', 'doctor_subscription.end_date', DB::raw('AVG(reviews.rating) as average_rating'))->whereHas('specializations', function ($q) use ($specializationID) {
+                $q->where('doctor_specialization.specialization_id', $specializationID);
+            })->where('city', $city)->with(['specializations', 'reviews', 'experiences'])->groupBy('doctors.id')
+                ->having('average_rating', '>', $vote)
+                ->orderBy('doctor_subscription.end_date', 'desc')
+                ->paginate(10);
+        } else if ($request->filled('city') && $request->filled('vote')) {
 
-        }
-
-      else if ($request->filled('specialization')) {
-            $specializationDB = Specialization::where('name', $specializationName)->first();
-            $specializationID = $specializationDB->id;
-            $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->select('doctors.*', 'doctor_subscription.end_date')->whereHas('specializations', function($q) use ($specializationID) {
-                $q->where('doctor_specialization.specialization_id', $specializationID);})->with(['specializations', 'reviews', 'experiences'])->orderBy('doctor_subscription.end_date', 'desc')->paginate(10);
-
-
-
-        }
-
-        else if ($city) {
-            $doctors =  $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->select('doctors.*', 'doctor_subscription.end_date')->where('city', $city)->with(['specializations', 'reviews', 'experiences'])->orderBy('doctor_subscription.end_date', 'desc')->paginate(10);
+            $doctors =  $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->join('reviews', 'reviews.doctor_id', '=', 'doctors.id')->select('doctors.*', 'doctor_subscription.end_date', DB::raw('AVG(reviews.rating) as average_rating'))->where('city', $city)->with(['specializations', 'reviews', 'experiences'])->groupBy('doctors.id')
+                ->having('average_rating', '>', $vote)
+                ->orderBy('doctor_subscription.end_date', 'desc')
+                ->paginate(10);
             $doctors->appends(['city' => $city]);
+        } else if ($request->filled('specialization') && $request->filled('vote')) {
 
+            $specializationDB = Specialization::where('name', $specializationName)->first();
+            $specializationID = $specializationDB->id;
+            $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->join('reviews', 'reviews.doctor_id', '=', 'doctors.id')->select('doctors.*', 'doctor_subscription.end_date', DB::raw('AVG(reviews.rating) as average_rating'))->whereHas('specializations', function ($q) use ($specializationID) {
+                $q->where('doctor_specialization.specialization_id', $specializationID);
+            })->with(['specializations', 'reviews', 'experiences'])->groupBy('doctors.id')
+                ->having('average_rating', '>', $vote)
+                ->orderBy('doctor_subscription.end_date', 'desc')
+                ->paginate(10);
+        } else if ($request->filled('specialization') && $request->filled('city')) {
+            $specializationDB = Specialization::where('name', $specializationName)->first();
+            $specializationID = $specializationDB->id;
+            $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->join('reviews', 'reviews.doctor_id', '=', 'doctors.id')->select('doctors.*', 'doctor_subscription.end_date', DB::raw('AVG(reviews.rating) as average_rating'))->whereHas('specializations', function ($q) use ($specializationID) {
+                $q->where('doctor_specialization.specialization_id', $specializationID);
+            })->where('city', $city)->with(['specializations', 'reviews', 'experiences'])->groupBy('doctors.id')->orderBy('doctor_subscription.end_date', 'desc')->paginate(10);
+        } else if ($request->filled('specialization')) {
+            $specializationDB = Specialization::where('name', $specializationName)->first();
+            $specializationID = $specializationDB->id;
+            $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->join('reviews', 'reviews.doctor_id', '=', 'doctors.id')->select('doctors.*', 'doctor_subscription.end_date', DB::raw('AVG(reviews.rating) as average_rating'))->whereHas('specializations', function ($q) use ($specializationID) {
+                $q->where('doctor_specialization.specialization_id', $specializationID);
+            })->with(['specializations', 'reviews', 'experiences'])->groupBy('doctors.id')->orderBy('doctor_subscription.end_date', 'desc')->paginate(10);
+        } else if ($city) {
+            $doctors =  $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->join('reviews', 'reviews.doctor_id', '=', 'doctors.id')->select('doctors.*', 'doctor_subscription.end_date', DB::raw('AVG(reviews.rating) as average_rating'))->where('city', $city)->with(['specializations', 'reviews', 'experiences'])->groupBy('doctors.id')->orderBy('doctor_subscription.end_date', 'desc')->paginate(10);
+            $doctors->appends(['city' => $city]);
+        } else if ($vote) {
+
+            $doctors =  $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->join('reviews', 'reviews.doctor_id', '=', 'doctors.id')->with(['specializations', 'reviews', 'experiences'])
+                ->select('doctors.*', 'doctor_subscription.end_date', DB::raw('AVG(reviews.rating) as average_rating'))
+                ->groupBy('doctors.id')
+                ->having('average_rating', '>', $vote)
+                ->orderBy('doctor_subscription.end_date', 'desc')
+                ->paginate(10);
+        } else {
+            $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->join('reviews', 'reviews.doctor_id', '=', 'doctors.id')->select('doctors.*', 'doctor_subscription.end_date', DB::raw('AVG(reviews.rating) as average_rating'))->with(['specializations', 'reviews', 'experiences'])->groupBy('doctors.id')->orderBy('doctor_subscription.end_date', 'desc')->paginate(10);
         }
 
-        else if ($vote) {
-
-            $doctors =  $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->with(['specializations', 'reviews', 'experiences'])->leftJoin('reviews', 'reviews.doctor_id', '=', 'doctors.id')
-            ->select('doctors.*', DB::raw('AVG(reviews.rating) as average_vote'))
-            ->groupBy('doctors.id')
-            ->orderBy('doctor_subscription.end_date', 'desc')
-            ->paginate(10);
-        }
-
-        else {
-            $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->select('doctors.*', 'doctor_subscription.end_date')->with(['specializations', 'reviews', 'experiences'])->orderBy('doctor_subscription.end_date', 'desc')->paginate(10);
-        }
 
 
-
-        $doctors->makeHidden(['user_id', 'created_at', 'updated_at', 'subscriptions', 'subscription_id', 'doctor_id', 'end_date' ]); //escludi campi
+        $doctors->makeHidden(['user_id', 'created_at', 'updated_at', 'subscriptions', 'subscription_id', 'doctor_id', 'end_date']); //escludi campi
         foreach ($doctors as $doctor) { //sposta campi da user a doctor e aggiungi rating medio
             $user = User::where('id', $doctor->user_id)->first();
             $doctor->name = $user->name;
+            $rounded_rating = round($doctor->average_rating, 2);
+            $doctor->average_rating = $rounded_rating;
             $doctor->surname = $user->surname;
             $doctor->slug = $user->slug;
-          //  dd($doctor->subscriptions->count());
+            //  dd($doctor->subscriptions->count());
             if ($doctor->end_date > Carbon::now()) {
                 $doctor->premium = true;
-            }
-            else {
+            } else {
                 $doctor->premium = false;
             }
-
-            $reviews = Review::where('doctor_id', $doctor->id)->get();
-            foreach ($reviews as $review) { //prendo i voti e li metto in un array
-                array_push($allratings, $review->rating);
-            }
-            //calcolo media
-            if (count($allratings) > 0) {
-                $sum = array_sum($allratings);
-                $count = count($allratings);
-
-                $average = $sum / $count;
-                $doctor->average_rating = round($average, 1);
-            }
-
-            $allratings = []; //svuoto array per il prox dottore
         }
+
+
+
+
+
         if ($doctors->isEmpty()) {
             return response()->json([
                 'success' => false,
@@ -138,7 +146,7 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        $doctor->load('specializations', 'reviews','experiences');
+        $doctor->load('specializations', 'reviews', 'experiences');
 
         $allratings = [];
         $user = User::where('id', $doctor->user_id)->first();
@@ -158,7 +166,6 @@ class DoctorController extends Controller
 
             $average = $sum / $count;
             $doctor->average_rating = round($average, 1);
-
         }
         return response()->json(
             [
@@ -198,7 +205,7 @@ class DoctorController extends Controller
         }
 
 
-        $randId = rand(1,300);
+        $randId = rand(1, 300);
         $newSlug = Str::slug($request->validated('name') . '-' . $request->validated('surname') . '-' . $randId);
         $doctorLogged->slug = $newSlug;
         $user->slug = $newSlug;
@@ -230,9 +237,7 @@ class DoctorController extends Controller
                 'status' => 'failed',
                 'message' => 'La vecchia password non è corretta'
             ], 401);
-
-        }
-        else {
+        } else {
             $newpassword = Hash::make($request->validated('newPassword'));
             $changeUser = User::findOrFail($user->id);
             $changeUser->password = $newpassword;
@@ -241,12 +246,11 @@ class DoctorController extends Controller
                 'status' => 'success',
                 'message' => 'Password modificata'
             ], 200);
-
         }
-
     }
 
-    public function uploadProfile(Request $request) {
+    public function uploadProfile(Request $request)
+    {
 
         $loggedID = Auth::user()->id;
 
@@ -265,10 +269,10 @@ class DoctorController extends Controller
         $responseData = ['imagelink' => $img_path];
 
         return response()->json($responseData, 200, [], JSON_UNESCAPED_SLASHES);
-
     }
 
-    public function addExperience(AddExperienceRequest $request) {
+    public function addExperience(AddExperienceRequest $request)
+    {
         $loggedID = Auth::user()->id;
 
         $newExp = new Experience();
@@ -285,13 +289,10 @@ class DoctorController extends Controller
             'status' => 'success',
             'message' => 'Esperienza aggiunta'
         ], 200);
-
-
-
-
     }
 
-    public function editExaminations(EditExaminationsRequest $request) {
+    public function editExaminations(EditExaminationsRequest $request)
+    {
 
         $loggedID = Auth::user()->id;
         $doctor = Doctor::where('user_id', $loggedID)->first();
@@ -302,10 +303,5 @@ class DoctorController extends Controller
             'status' => 'success',
             'message' => 'Esperienze modificate'
         ], 200);
-
     }
-
-
-
-
 }
