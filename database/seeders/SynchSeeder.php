@@ -17,7 +17,7 @@ class SynchSeeder extends Seeder
     {
 
         for ($i = 1; $i <= 100; $i++) {
-            $toSubscribe = [1,6,12,16,21];
+            $toSubscribe = [1,6,11,16,21,26,31,36,41,46,51,56,61,66,71,76,81,86,91,96];
             $doctor = Doctor::where('id', $i)->first();
             if (in_array($i, $toSubscribe)) {
                 $randID = rand(1, 3);
