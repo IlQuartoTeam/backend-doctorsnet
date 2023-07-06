@@ -35,49 +35,38 @@ class DoctorController extends Controller
         if ($request->filled('specialization') && $request->filled('city')) {
             $specializationDB = Specialization::where('name', $specializationName)->first();
             $specializationID = $specializationDB->id;
-            $doctors = Doctor::whereHas('specializations', function($q) use ($specializationID) {
-                $q->where('doctor_specialization.specialization_id', $specializationID);})->where('city', $city)->with(['specializations', 'subscriptions' => function ($query) {
-                    $query->where('end_date', '>', Carbon::now());
-                }, 'reviews', 'experiences'])->paginate(10);
+            $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->whereHas('specializations', function($q) use ($specializationID) {
+                $q->where('doctor_specialization.specialization_id', $specializationID);})->where('city', $city)->with(['specializations', 'reviews', 'experiences'])->orderBy('doctor_subscription.end_date', 'desc')->paginate(10);
 
         }
 
       else if ($request->filled('specialization')) {
             $specializationDB = Specialization::where('name', $specializationName)->first();
             $specializationID = $specializationDB->id;
-            $doctors = Doctor::whereHas('specializations', function($q) use ($specializationID) {
-                $q->where('doctor_specialization.specialization_id', $specializationID);})->with(['specializations', 'subscriptions' => function ($query) {
-                    $query->where('end_date', '>', Carbon::now());
-                }, 'reviews', 'experiences'])->paginate(10);
+            $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->whereHas('specializations', function($q) use ($specializationID) {
+                $q->where('doctor_specialization.specialization_id', $specializationID);})->with(['specializations', 'reviews', 'experiences'])->orderBy('doctor_subscription.end_date', 'desc')->paginate(10);
 
-            /* ->with(['specializations', 'subscriptions' => function ($query) {
-                $query->where('end_date', '>', Carbon::now());
-            }, 'reviews', 'experiences'])->paginate(10);
-            $doctors->appends(['city' => $city]); */
+
 
         }
 
         else if ($city) {
-            $doctors = Doctor::where('city', $city)->with(['specializations', 'subscriptions' => function ($query) {
-                $query->where('end_date', '>', Carbon::now());
-            }, 'reviews', 'experiences'])->paginate(10);
+            $doctors =  $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->where('city', $city)->with(['specializations', 'reviews', 'experiences'])->orderBy('doctor_subscription.end_date', 'desc')->paginate(10);
             $doctors->appends(['city' => $city]);
         } else {
-            $doctors = Doctor::latest()->with(['specializations', 'subscriptions' => function ($query) {
-                $query->where('end_date', '>', Carbon::now());
-            }, 'reviews', 'experiences'])->paginate(10);
+            $doctors = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->with(['specializations', 'reviews', 'experiences'])->orderBy('doctor_subscription.end_date', 'desc')->paginate(10);
         }
 
 
 
-        $doctors->makeHidden(['user_id', 'created_at', 'updated_at', 'subscriptions']); //escludi campi
+        $doctors->makeHidden(['user_id', 'created_at', 'updated_at', 'subscriptions', 'subscription_id', 'doctor_id', ]); //escludi campi
         foreach ($doctors as $doctor) { //sposta campi da user a doctor e aggiungi rating medio
             $user = User::where('id', $doctor->user_id)->first();
             $doctor->name = $user->name;
             $doctor->surname = $user->surname;
             $doctor->slug = $user->slug;
           //  dd($doctor->subscriptions->count());
-            if ($doctor->subscriptions->count() != 0) {
+            if ($doctor->end_date > Carbon::now()) {
                 $doctor->premium = true;
             }
             else {
