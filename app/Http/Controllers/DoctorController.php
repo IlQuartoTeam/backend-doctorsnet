@@ -59,7 +59,7 @@ class DoctorController extends Controller
 
 
 
-        $doctors->makeHidden(['user_id', 'created_at', 'updated_at', 'subscriptions', 'subscription_id', 'doctor_id', ]); //escludi campi
+        $doctors->makeHidden(['user_id', 'created_at', 'updated_at', 'subscriptions', 'subscription_id', 'doctor_id', 'end_date' ]); //escludi campi
         foreach ($doctors as $doctor) { //sposta campi da user a doctor e aggiungi rating medio
             $user = User::where('id', $doctor->user_id)->first();
             $doctor->name = $user->name;
