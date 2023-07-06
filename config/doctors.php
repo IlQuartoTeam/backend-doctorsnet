@@ -37,8 +37,8 @@ return [
         "profile_image_url" => $female1,
         "address" => "Corso Vittorio Emanuele II, 10",
         "city" => "Torino",
-        "lat" => 45.0689,
-        "long" => 7.6821
+        "lat" => 45.0593619,
+        "long" => 7.6889242
     ],
     [
         "phone" => "+39 333 2345678",
@@ -53,8 +53,8 @@ return [
         "profile_image_url" => $female2,
         "address" => "Piazza Castello, 30",
         "city" => "Torino",
-        "lat" => 45.0705,
-        "long" => 7.6862
+        "lat" => 45.0707471,
+        "long" => 7.6840819
     ],
     [
         "phone" => "+39 333 4567890",
@@ -75,18 +75,18 @@ return [
     [
         "phone" => "+39 333 6789012",
         "profile_image_url" => $male4,
-        "address" => 'Via Pietro Micca,60',
+        "address" => 'Via Pietro Micca,15',
         'city' => 'Torino',
-        'lat' => '45.0705',
-        'long' => '7.6700'
+        'lat' => '45.0703628',
+        'long' => '7.6797464'
     ],
     [
         'phone' => '0119876543',
         'profile_image_url' => $female4,
-        'address' => 'Corso Inghilterra,70',
+        'address' => 'Corso Inghilterra,20',
         'city' => 'Torino',
-        'lat' => '45.0736',
-        'long' => '7.6685'
+        'lat' => '45.0761674',
+        'long' => '7.6682543'
     ],
     [
         'phone' => '+393331234567',
@@ -133,8 +133,8 @@ return [
         'profile_image_url' => $female7,
         'address' => 'Corso Vittorio Emanuele II,130',
         'city' => 'Torino',
-        'lat' => '45.0689',
-        'long' => '7.6821'
+        'lat' => '45.0699505',
+        'long' => '7.6596985'
     ],
     [
         'phone' => '+393337890123',
@@ -171,18 +171,18 @@ return [
     [
         "phone" => "+39 333 6789012",
         "profile_image_url" => $male10,
-        "address" => "Via Pietro Micca,180",
+        "address" => "Via San Donato,2",
         "city" => "Torino",
-        "lat" => "45.0705",
-        "long" => "7.6700"
+        "lat" => "45.0777603",
+        "long" => "7.6686896"
     ],
     [
         "phone" => "+39 333 7890123",
         "profile_image_url" => $female10,
-        "address" => "Corso Inghilterra,190",
+        "address" => "Via Bertola, 25",
         "city" => "Torino",
-        "lat" => "45.0736",
-        "long" => "7.6685"
+        "lat" => "45.0708516",
+        "long" => "7.6787864"
     ],
     /**
      * CATANIA
@@ -200,16 +200,16 @@ return [
         "profile_image_url" => $female1,
         "address" => "Via Vittorio Emanuele II, 10",
         "city" => "Catania",
-        "lat" => 37.5030,
-        "long" => 15.0872
+        "lat" => 37.5036353,
+        "long" => 15.0948518
     ],
     [
         "phone" => "+39 333 2345678",
         "profile_image_url" => $male2,
         "address" => "Via Umberto I, 20",
         "city" => "Catania",
-        "lat" => 37.5096,
-        "long" => 15.0826
+        "lat" => 37.5109619,
+        "long" => 15.0860026
     ],
     [
         "phone" => "+39 333 3456789",
@@ -232,16 +232,16 @@ return [
         'profile_image_url' => $female3,
         'address' => 'Corso Sicilia,50',
         'city' => 'Catania',
-        'lat' => '37.5105',
-        'long' => '15.0826'
+        'lat' => '37.5074513',
+        'long' => '15.089488'
     ],
     [
         'phone' => '+393332345678',
         'profile_image_url' => $male4,
         'address' => 'Via Androne,60',
         'city' => 'Catania',
-        'lat' => '37.5079',
-        'long' => '15.0838'
+        'lat' => '37.5109934',
+        'long' => '15.0802032'
     ],
     [
         'phone' => '+393333456789',
@@ -288,16 +288,16 @@ return [
         'profile_image_url' => $male7,
         'address' =>    'Via Antonino di Sangiuliano,120',
         'city' =>    'Catania',
-        'lat' =>    37.5045,
-        'long' =>    15.0863
+        'lat' =>    37.505146,
+        'long' =>    15.0918028
     ],
     [
         'phone' => '+393339012345',
         'profile_image_url' => $female7,
         'address' =>    'Via Giuseppe Garibaldi,130',
         'city' =>    'Catania',
-        'lat' =>    37.5030,
-        'long' =>    15.0883
+        'lat' =>    37.5013115,
+        'long' =>    15.0821177
     ],
     [
         'phone' => '+393340123456',
@@ -336,16 +336,16 @@ return [
         "profile_image_url" => $male10,
         "address" => "Via Antonino di Sangiuliano,180",
         "city" => "Catania",
-        "lat" => 37.5045,
-        "long" => 15.0863
+        "lat" => 37.5051104,
+        "long" => 15.0888682
     ],
     [
         "phone" => "+39 333 7890123",
         "profile_image_url" => $female10,
         "address" => "Via Giuseppe Garibaldi,190",
         "city" => "Catania",
-        "lat" => 37.5030,
-        "long" => 15.0883
+        "lat" => 37.5009836,
+        "long" => 15.080411
     ],
     /**
      * ROMA
@@ -457,7 +457,7 @@ return [
     [
         "phone" => ' +393340123456 ',
         "profile_image_url" => $female7,
-        "address" => ' Via dei Condotti ,130 ',
+        "address" => ' Via dei Condotti,130 ',
         "city" => 'Roma',
         "lat" => 41.9058,
         "long" => 12.4794
@@ -465,7 +465,7 @@ return [
     [
         "phone" => ' +393341234567 ',
         "profile_image_url" => $male8,
-        "address" => ' Via Margutta ,140 ',
+        "address" => ' Via Margutta,140 ',
         "city" => 'Roma',
         "lat" => 41.9086,
         "long" => 12.4769
@@ -473,7 +473,7 @@ return [
     [
         "phone" => ' +393342345678 ',
         "profile_image_url" => $female8,
-        "address" => ' Via del Boschetto ,150 ',
+        "address" => ' Via del Boschetto,150 ',
         "city" => 'Roma',
         "lat" => 41.8986,
         "long" => 12.4906
@@ -481,7 +481,7 @@ return [
     [
         "phone" => ' +393343456789 ',
         "profile_image_url" => $male9,
-        "address" => ' Via dei Giubbonari ,160 ',
+        "address" => ' Via dei Giubbonari,160 ',
         "city" => 'Roma',
         "lat" => 41.8951,
         "long" => 12.4725
@@ -489,7 +489,7 @@ return [
     [
         "phone" => ' +393344567890 ',
         "profile_image_url" => $female9,
-        "address" => ' Via del Pellegrino ,170 ',
+        "address" => ' Via del Pellegrino,170 ',
         "city" => 'Roma',
         "lat" => 41.8960,
         "long" => 12.4713
@@ -499,16 +499,16 @@ return [
         "profile_image_url" => $male10,
         "address" => "Via del Corso,180",
         "city" => "Roma",
-        "lat" => 41.9028,
-        "long" => 12.4964
+        "lat" => 41.7773925,
+        "long" => 12.3977211
     ],
     [
         "phone" => "+39 333 7890123",
         "profile_image_url" => $female10,
         "address" => "Via Nazionale,190",
         "city" => "Roma",
-        "lat" => 41.9002,
-        "long" => 12.4946
+        "lat" => 41.8985536,
+        "long" => 12.4897015
     ],
     // NAPOLI
 
@@ -680,24 +680,24 @@ return [
         "profile_image_url" => $male1,
         "address" => "Via Montenapoleone, 1",
         "city" => "Milano",
-        "lat" => 45.4675,
-        "long" => 9.1935
+        "lat" => 45.4673025,
+        "long" => 9.1962009
     ],
     [
         "phone" => "+39 333 1234567",
         "profile_image_url" => $female1,
         "address" => "Corso Buenos Aires, 10",
         "city" => "Milano",
-        "lat" => 45.4780,
-        "long" => 9.2194
+        'lat' => '45.4762513',
+        'long' => '9.2070585'
     ],
     [
         'phone' => '0298765432',
         'profile_image_url' => $male2,
-        'address' => 'Corso Vittorio Emanuele II,20',
+        'address' => 'Piazza della Scala, 1',
         'city' => 'Milano',
-        'lat' => '45.4658',
-        'long' => '9.1916'
+        'lat' => '45.46760475',
+        'long' => '9.189119638776418'
     ],
     [
         'phone' => '+393331234567',
@@ -824,8 +824,8 @@ return [
         "profile_image_url" => $male10,
         "address" => "Via Montenapoleone,180",
         "city" => "Milano",
-        "lat" => 45.4675,
-        "long" => 9.1935
+        "lat" => 45.4681372,
+        "long" => 9.1962485
     ],
     [
         "phone" => "+39 333 7890123",
