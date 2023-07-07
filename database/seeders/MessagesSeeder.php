@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 use App\Models\Message;
 use Faker\Generator as Faker;
 
@@ -34,6 +35,7 @@ class MessagesSeeder extends Seeder
         $newMessage->fullname = $messages[$randreview]['fullname'];
         $newMessage->ip = $faker->ipv4();
         $newMessage->prefered_date = $faker->date('Y-m-d');
+        $newMessage->created_at = Carbon::today()->subDays(rand(0, 365));
         $newMessage->save();
             }
     }}

@@ -118,7 +118,7 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        $doctor->load('specializations', 'experiences');
+        $doctor->load('specializations', 'experiences', 'reviews');
 
         $allratings = [];
         $user = User::where('id', $doctor->user_id)->first();
