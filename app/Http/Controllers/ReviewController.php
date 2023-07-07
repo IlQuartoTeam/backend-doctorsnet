@@ -12,9 +12,14 @@ class ReviewController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Doctor $doctor)
     {
-        //
+        $reviews = Review::where('doctor_id', $doctor->id)
+                   ->orderBy('created_at', 'desc')->get();
+
+                   return response()->json(
+                        $reviews
+                );
     }
 
     /**

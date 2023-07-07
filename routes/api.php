@@ -33,7 +33,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 Route::post('/user', [AuthController::class, 'user'])->middleware('auth:sanctum');
 Route::resource('specializations', SpecializationController::class)->only(['index']);
 Route::resource('doctors', DoctorController::class)->parameters(['doctors' => 'doctor:slug'])->only(['index', 'show']);
-Route::resource('doctors.reviews', ReviewController::class)->only(['store']);
+Route::resource('doctors.reviews', ReviewController::class)->only(['store', 'index']);
 Route::match(['put', 'patch'], '/user/edit', [DoctorController::class, 'update'])->middleware('auth:sanctum');
 Route::patch('/user/password', [DoctorController::class, 'changePassword'])->middleware('auth:sanctum');
 Route::post('/user/image', [DoctorController::class, 'uploadProfile'])->middleware('auth:sanctum');
