@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SpecializationController;
 use App\Models\Doctor;
@@ -26,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/doctors/premium/', [DoctorController::class, 'premiumDoctors']);
+Route::get('/payment/initialize/', [PaymentController::class, 'initialize']);
 Route::resource('doctors.messages', MessageController::class)->only(['store']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
