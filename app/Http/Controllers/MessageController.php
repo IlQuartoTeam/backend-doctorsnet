@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReadMessageRequest;
 use App\Models\Message;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
@@ -75,5 +76,25 @@ class MessageController extends Controller
     public function destroy(Message $Message)
     {
         //
+    }
+
+    public function read(ReadMessageRequest $request) {
+        $messageId = $request->input('messageId');
+        $message = Message::find($messageId);
+        if(!$message) {
+            return response()->json([
+                'error' => 'Ma che id mhai mandato?',
+                404
+            ]);
+        }
+
+        $message->been_read = $request->input('readAction') ? 1 : 0;
+        $message->save();
+
+
+        return response()->json([
+            'success' => 'The message has been read',
+            200
+        ]);
     }
 }
