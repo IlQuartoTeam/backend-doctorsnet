@@ -77,7 +77,7 @@ class DoctorController extends Controller
             $doctor->surname = $user->surname;
             $doctor->slug = $user->slug;
 
-            if ($doctor->end_date > Carbon::now()) {
+            if ($doctor->end_date >= Carbon::now()) {
                 $doctor->premium = true;
             } else {
                 $doctor->premium = false;
@@ -277,9 +277,24 @@ class DoctorController extends Controller
         ], 200);
     }
 
-    public function premiumDoctors(Request $request) {
+    public function premiumDoctors() {
+
+  $doctorsPremium = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')
+            ->select('doctors.*', 'doctor_subscription.end_date')
+            ->where('doctor_subscription.end_date', '>=', Carbon::now())
+            ->with(['specializations', 'reviews'])
+            ->inRandomOrder()
+            ->limit(5)
+            ->get();
+
+            foreach ($doctorsPremium as $doctor) {
+                $doctor->premium = true; //gestione frontend
+            }
 
 
+            return response()->json([
+                'premiumUsers' => $doctorsPremium
+            ], 200);
+        }
 
-    }
 }

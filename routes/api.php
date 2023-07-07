@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+Route::get('/doctors/premium/', [DoctorController::class, 'premiumDoctors']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
@@ -38,6 +38,5 @@ Route::post('/user/image', [DoctorController::class, 'uploadProfile'])->middlewa
 Route::post('/user/experiences', [DoctorController::class, 'addExperience'])->middleware('auth:sanctum');
 Route::post('/user/experiences/{experience}/delete', [ExperienceController::class, 'destroy'])->middleware('auth:sanctum');
 Route::post('/user/examinations', [DoctorController::class, 'editExaminations'])->middleware('auth:sanctum');
-
 
 
