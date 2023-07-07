@@ -65,7 +65,7 @@ class DoctorController extends Controller
             $doctorsQuery->having('average_rating', '>=', $vote);
         }
 
-        $doctors = $doctorsQuery->paginate(10);
+        $doctors = $doctorsQuery->paginate(10)->appends(request()->query());
 
         $doctors->makeHidden(['user_id', 'created_at', 'updated_at', 'subscriptions', 'subscription_id', 'doctor_id', 'end_date']);
 
