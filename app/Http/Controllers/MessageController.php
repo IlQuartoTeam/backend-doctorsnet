@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
+use App\Models\Doctor;
 
 class MessageController extends Controller
 {
@@ -27,9 +28,21 @@ class MessageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMessageRequest $request)
+    public function store(StoreMessageRequest $request, Doctor $doctor)
     {
-        //
+        $message = new Message();
+        $message->doctor_id = $doctor->id;
+        $message->text = $request->validated('text');
+        $message->email = $request->validated('email');
+        $message->fullname = $request->validated('fullname');
+        $message->prefered_date = $request->validated('prefered_date');
+        $message->ip = $request->ip();
+        $message->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Messaggio inviato'
+        ], 200);
     }
 
     /**
