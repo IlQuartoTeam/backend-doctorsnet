@@ -81,17 +81,17 @@ class MessageController extends Controller
 
         if(!$message) {
             return response()->json([
-                'error' => 'Non so che dirti, prova a refreshare',
+                'error' => 'Non so che dirti, prova a refreshare'],
                 404
-            ]);
+            );
         }
 
       else if ($message->doctor_id != $loggedID) {
 
             return response()->json([
-                'error' => 'Non autorizzato',
+                'error' => 'Non autorizzato'],
                 401
-            ]);
+            );
         }
 
  else {
@@ -99,9 +99,9 @@ class MessageController extends Controller
         $message->delete();
 
         return response()->json([
-            "success" => "Addios messaggio",
+            "success" => "Addios messaggio"],
             200
-        ]);}
+        );}
 
     }
 
@@ -114,16 +114,16 @@ class MessageController extends Controller
 
         if(!$message) {
             return response()->json([
-                'error' => 'Ma che id mhai mandato?',
+                'error' => 'Ma che id mhai mandato?'],
                 404
-            ]);
+            );
         }
 
         else if ($message->doctor_id != $loggedID) {
             return response()->json([
-                'error' => 'Non autorizzato',
+                'error' => 'Non autorizzato'],
                 401
-            ]);
+            );
 
         }
 
@@ -134,8 +134,8 @@ class MessageController extends Controller
 
 
         return response()->json([
-            'success' => 'The message has been read',
+            'success' => 'The message has been read'],
             200
-        ]);}
+        );}
     }
 }
