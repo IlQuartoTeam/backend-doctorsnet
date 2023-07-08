@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DeleteMessageRequest;
 use App\Http\Requests\ReadMessageRequest;
 use App\Models\Message;
 use App\Http\Requests\StoreMessageRequest;
@@ -73,9 +74,24 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Message $Message)
+    public function destroy(DeleteMessageRequest $request, int $messageId)
     {
-        //
+        $messToDel = Message::find($messageId);
+
+        if(!$messToDel) {
+            return response()->json([
+                'error' => 'Non so che dirti, prova a refreshare',
+                404
+            ]);
+        }
+
+        $messToDel->delete();
+
+        return response()->json([
+            "success" => "Addios messaggio",
+            200
+        ]);
+
     }
 
     public function read(ReadMessageRequest $request) {
