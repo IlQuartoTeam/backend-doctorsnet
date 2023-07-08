@@ -7,6 +7,7 @@ use App\Http\Requests\ReadMessageRequest;
 use App\Models\Message;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Doctor;
 
 class MessageController extends Controller
@@ -74,35 +75,59 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DeleteMessageRequest $request, int $messageId)
+    public function destroy(DeleteMessageRequest $request, Message $message)
     {
-        $messToDel = Message::find($messageId);
+        $loggedID = Auth::user()->id;
 
-        if(!$messToDel) {
+        if(!$message) {
             return response()->json([
                 'error' => 'Non so che dirti, prova a refreshare',
                 404
             ]);
         }
 
-        $messToDel->delete();
+      else if ($message->doctor_id != $loggedID) {
+
+            return response()->json([
+                'error' => 'Non autorizzato',
+                401
+            ]);
+        }
+
+ else {
+
+        $message->delete();
 
         return response()->json([
             "success" => "Addios messaggio",
             200
-        ]);
+        ]);}
 
     }
 
     public function read(ReadMessageRequest $request) {
+        $loggedID = Auth::user()->id;
+
+
         $messageId = $request->input('messageId');
         $message = Message::find($messageId);
+
         if(!$message) {
             return response()->json([
                 'error' => 'Ma che id mhai mandato?',
                 404
             ]);
         }
+
+        else if ($message->doctor_id != $loggedID) {
+            return response()->json([
+                'error' => 'Non autorizzato',
+                401
+            ]);
+
+        }
+
+        else {
 
         $message->been_read = $request->input('readAction') ? 1 : 0;
         $message->save();
@@ -111,6 +136,6 @@ class MessageController extends Controller
         return response()->json([
             'success' => 'The message has been read',
             200
-        ]);
+        ]);}
     }
 }
