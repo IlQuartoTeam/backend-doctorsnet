@@ -75,7 +75,22 @@ class MessageController extends Controller
      */
     public function destroy(Message $Message)
     {
-        //
+        $messToDel = Message::find($Message->id);
+
+        if(!$messToDel) {
+            return response()->json([
+                'error' => 'Non so che dirti, prova a refreshare',
+                404
+            ]);
+        }
+
+        $messToDel->delete();
+
+        return response()->json([
+            "success" => "Addios messaggio",
+            200
+        ]);
+
     }
 
     public function read(ReadMessageRequest $request) {
