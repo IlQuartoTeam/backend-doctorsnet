@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/doctors/premium/', [DoctorController::class, 'premiumDoctors']);
 Route::resource('doctors.messages', MessageController::class)->only(['store']);
-Route::resource('doctors.messages', MessageController::class)->only(['destroy'])->middleware('auth:sanctum');
+Route::resource('messages', MessageController::class)->only(['destroy'])->middleware('auth:sanctum');
 Route::post('/doctors/messages/read', [MessageController::class, 'read'])->middleware('auth:sanctum');
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
