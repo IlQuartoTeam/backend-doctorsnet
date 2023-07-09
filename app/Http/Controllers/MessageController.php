@@ -15,9 +15,14 @@ class MessageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Doctor $doctor)
     {
-        //
+        $messages = Message::where('doctor_id', $doctor->id)
+        ->orderBy('created_at', 'desc')->get();
+
+        return response()->json(
+             $messages
+     );
     }
 
     /**
