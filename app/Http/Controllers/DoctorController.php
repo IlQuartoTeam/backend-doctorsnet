@@ -307,7 +307,6 @@ class DoctorController extends Controller
             $doctor = Doctor::where('user_id', $loggedID)->first();
 
             $listMessages = [];
-            $numberMessages = [];
 
             $messages = $doctor->messages()->whereBetween('created_at', [$start_date, $end_date])->get();
 
@@ -326,6 +325,29 @@ class DoctorController extends Controller
                 'statsMessages' => $listMessages
             ], 200);
 
+        }
+
+        public function reviewsStats(Request $request) {
+            $start_date = $request->start_date;
+            $end_date = $request->end_date;
+            $loggedID = Auth::user()->id;
+            $doctor = Doctor::where('user_id', $loggedID)->first();
+
+            $listReviews = [];
+
+            $reviews = $doctor->reviews()->whereBetween('created_at', [$start_date, $end_date])->get();
+
+            foreach ($reviews as $review) {
+                $receivedDate = $review->created_at->format('Y-m-d');
+                if (!isset($listReviews[$receivedDate])) {
+                    $listReviews[$receivedDate] = 0;
+                }
+                $listReviews[$receivedDate]++;
+            }
+
+            return response()->json([
+                'statsReviews' => $listReviews
+            ], 200);
         }
 
 }
