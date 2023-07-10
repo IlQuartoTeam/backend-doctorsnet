@@ -13,7 +13,11 @@ class SubscriptionController extends Controller
      */
     public function index()
     {
-        //
+        $subscriptions = Subscription::all();
+
+        return response()->json(
+            $subscriptions
+    );
     }
 
     /**

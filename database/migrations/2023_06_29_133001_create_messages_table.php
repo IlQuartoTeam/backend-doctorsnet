@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('fullname', 200);
             $table->string('ip', 15);
+            $table->boolean('been_read')->default(0);
             $table->date('prefered_date');
         });
     }

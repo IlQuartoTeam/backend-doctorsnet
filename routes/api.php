@@ -9,6 +9,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SpecializationController;
+use App\Http\Controllers\SubscriptionController;
 use App\Models\Doctor;
 
 /*
@@ -29,7 +30,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/doctors/premium/', [DoctorController::class, 'premiumDoctors']);
 Route::get('/payment/initialize/', [PaymentController::class, 'initialize']);
 Route::post('/payment/process/', [PaymentController::class, 'process']);
-Route::resource('doctors.messages', MessageController::class)->only(['store']);
+Route::resource('doctors.messages', MessageController::class)->only(['store', 'index']);
+Route::post('/doctors/messages/read', [MessageController::class, 'read'])->middleware('auth:sanctum');
+Route::resource('subscriptions', SubscriptionController::class)->only(['index']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
@@ -42,6 +45,7 @@ Route::patch('/user/password', [DoctorController::class, 'changePassword'])->mid
 Route::post('/user/image', [DoctorController::class, 'uploadProfile'])->middleware('auth:sanctum');
 Route::post('/user/experiences', [DoctorController::class, 'addExperience'])->middleware('auth:sanctum');
 Route::post('/user/experiences/{experience}/delete', [ExperienceController::class, 'destroy'])->middleware('auth:sanctum');
+Route::post('/messages/{message}/delete', [MessageController::class, 'destroy'])->middleware('auth:sanctum');
 Route::post('/user/examinations', [DoctorController::class, 'editExaminations'])->middleware('auth:sanctum');
 
 

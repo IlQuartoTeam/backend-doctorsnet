@@ -284,10 +284,13 @@ class DoctorController extends Controller
             ->where('doctor_subscription.end_date', '>=', Carbon::now())
             ->with(['specializations', 'reviews'])
             ->inRandomOrder()
-            ->limit(5)
+            ->limit(10)
             ->get();
 
             foreach ($doctorsPremium as $doctor) {
+                $user = User::where('id', $doctor->user_id)->first();
+                $doctor->name = $user->name;
+                $doctor->surname = $user->surname;
                 $doctor->premium = true; //gestione frontend
             }
 
