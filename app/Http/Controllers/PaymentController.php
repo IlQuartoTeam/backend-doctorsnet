@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Carbon;
 use App\Models\Doctor;
 use Braintree\ClientToken;
+use App\Models\Subscription;
 use Braintree\Configuration;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,9 +50,10 @@ class PaymentController extends Controller
         if ($result->success) {
             $loggedID = Auth::user()->id;
             $doctor = Doctor::where('user_id', $loggedID)->first();
-            $sub = $request->subscription;
+            $sub = $request->subID;
+            $subDetails = Subscription::where('id', $sub)->first();
 
-            $doctor->subscriptions()->attach($sub, ['end_date' => Carbon::now()->addDays($sub->days_duration)]);
+            $doctor->subscriptions()->attach($sub, ['end_date' => Carbon::now()->addDays($subDetails->days_duration)]);
 
 
 

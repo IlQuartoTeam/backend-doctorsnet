@@ -31,7 +31,7 @@ Route::post('/user/messages/stats', [DoctorController::class, 'messageStats'])->
 Route::post('/user/reviews/stats', [DoctorController::class, 'reviewsStats'])->middleware('auth:sanctum');
 Route::get('/doctors/premium/', [DoctorController::class, 'premiumDoctors']);
 Route::get('/payment/initialize/', [PaymentController::class, 'initialize']);
-Route::post('/payment/process/', [PaymentController::class, 'process']);
+Route::post('/payment/process/', [PaymentController::class, 'process'])->middleware('auth:sanctum');;
 Route::resource('doctors.messages', MessageController::class)->only(['store', 'index']);
 Route::post('/doctors/messages/read', [MessageController::class, 'read'])->middleware('auth:sanctum');
 Route::resource('subscriptions', SubscriptionController::class)->only(['index']);
