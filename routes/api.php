@@ -8,6 +8,7 @@ use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SpecializationController;
+use App\Http\Controllers\SubscriptionController;
 use App\Models\Doctor;
 
 /*
@@ -28,6 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/doctors/premium/', [DoctorController::class, 'premiumDoctors']);
 Route::resource('doctors.messages', MessageController::class)->only(['store', 'index']);
 Route::post('/doctors/messages/read', [MessageController::class, 'read'])->middleware('auth:sanctum');
+Route::resource('subscriptions', SubscriptionController::class)->only(['index']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
