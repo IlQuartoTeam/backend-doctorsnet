@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\SubscriptionController;
@@ -27,6 +28,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/doctors/premium/', [DoctorController::class, 'premiumDoctors']);
+Route::get('/payment/initialize/', [PaymentController::class, 'initialize']);
+Route::post('/payment/process/', [PaymentController::class, 'process']);
 Route::resource('doctors.messages', MessageController::class)->only(['store', 'index']);
 Route::post('/doctors/messages/read', [MessageController::class, 'read'])->middleware('auth:sanctum');
 Route::resource('subscriptions', SubscriptionController::class)->only(['index']);
