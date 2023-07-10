@@ -288,6 +288,9 @@ class DoctorController extends Controller
             ->get();
 
             foreach ($doctorsPremium as $doctor) {
+                $user = User::where('id', $doctor->user_id)->first();
+                $doctor->name = $user->name;
+                $doctor->surname = $user->surname;
                 $doctor->premium = true; //gestione frontend
             }
 
