@@ -300,4 +300,32 @@ class DoctorController extends Controller
             ], 200);
         }
 
+        public function messageStats(Request $request) {
+            $start_date = $request->start_date;
+            $end_date = $request->end_date;
+            $loggedID = Auth::user()->id;
+            $doctor = Doctor::where('user_id', $loggedID)->first();
+
+            $listMessages = [];
+            $numberMessages = [];
+
+            $messages = $doctor->messages()->whereBetween('created_at', [$start_date, $end_date])->get();
+
+            foreach ($messages as $message) {
+                $receivedDate = $message->created_at->format('Y-m-d');
+                if (!isset($listMessages[$receivedDate])) {
+                    $listMessages[$receivedDate] = 0;
+                }
+                $listMessages[$receivedDate]++;
+            }
+
+
+
+
+            return response()->json([
+                'statsMessages' => $listMessages
+            ], 200);
+
+        }
+
 }

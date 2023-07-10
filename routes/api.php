@@ -27,6 +27,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/user/messages/stats', [DoctorController::class, 'messageStats'])->middleware('auth:sanctum');
+
 Route::get('/doctors/premium/', [DoctorController::class, 'premiumDoctors']);
 Route::get('/payment/initialize/', [PaymentController::class, 'initialize']);
 Route::post('/payment/process/', [PaymentController::class, 'process']);
