@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Experience;
 use App\Http\Requests\StoreExperienceRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Doctor;
+use App\Models\Review;
 use App\Http\Requests\UpdateExperienceRequest;
 
 class ExperienceController extends Controller
@@ -12,9 +14,18 @@ class ExperienceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Doctor $doctor)
     {
-        //
+        $work = Experience::where('doctor_id', $doctor->id)->where('type', 'work')
+            ->orderBy('start_date', 'desc')->get();
+
+        $education = Experience::where('doctor_id', $doctor->id)->where('type', 'work')
+            ->orderBy('start_date', 'desc')->get();
+
+        return response()->json(
+            ['work' => $work,
+            'education' => $education]
+        );
     }
 
     /**
@@ -69,15 +80,14 @@ class ExperienceController extends Controller
                 'status' => 'failed',
                 'message' => 'Richiesta impropria'
             ], 401);
+        } else {
+
+            $Experience->delete();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Esperienza cancellata'
+            ], 200);
         }
-
-        else {
-
-        $Experience->delete();
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Esperienza cancellata'
-        ], 200);
-    }}
+    }
 }
