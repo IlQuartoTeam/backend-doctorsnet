@@ -15,7 +15,7 @@ class ReviewController extends Controller
     public function index(Doctor $doctor)
     {
         $reviews = Review::where('doctor_id', $doctor->id)
-                   ->orderBy('created_at', 'desc')->get();
+                   ->orderBy('created_at', 'desc')->paginate(5);
 
                    return response()->json(
                         $reviews

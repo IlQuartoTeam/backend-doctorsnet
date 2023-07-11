@@ -18,7 +18,7 @@ class MessageController extends Controller
     public function index(Doctor $doctor)
     {
         $messages = Message::where('doctor_id', $doctor->id)
-        ->orderBy('created_at', 'desc')->get();
+        ->orderBy('created_at', 'desc')->paginate(10);
 
         return response()->json(
              $messages
