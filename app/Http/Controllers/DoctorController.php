@@ -277,9 +277,10 @@ class DoctorController extends Controller
         ], 200);
     }
 
-    public function premiumDoctors() {
+    public function premiumDoctors()
+    {
 
-  $doctorsPremium = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')
+        $doctorsPremium = Doctor::leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')
             ->select('doctors.*', 'doctor_subscription.end_date')
             ->where('doctor_subscription.end_date', '>=', Carbon::now())
             ->with(['specializations', 'reviews'])
@@ -287,67 +288,92 @@ class DoctorController extends Controller
             ->limit(10)
             ->get();
 
-            foreach ($doctorsPremium as $doctor) {
-                $user = User::where('id', $doctor->user_id)->first();
-                $doctor->name = $user->name;
-                $doctor->surname = $user->surname;
-                $doctor->premium = true; //gestione frontend
-            }
-
-
-            return response()->json([
-                'premiumUsers' => $doctorsPremium
-            ], 200);
+        foreach ($doctorsPremium as $doctor) {
+            $user = User::where('id', $doctor->user_id)->first();
+            $doctor->name = $user->name;
+            $doctor->surname = $user->surname;
+            $doctor->premium = true; //gestione frontend
         }
 
-        public function messageStats(Request $request) {
-            $start_date = $request->start_date;
-            $end_date = $request->end_date;
-            $loggedID = Auth::user()->id;
-            $doctor = Doctor::where('user_id', $loggedID)->first();
 
-            $listMessages = [];
+        return response()->json([
+            'premiumUsers' => $doctorsPremium
+        ], 200);
+    }
 
-            $messages = $doctor->messages()->whereBetween('created_at', [$start_date, $end_date])->get();
+    public function messageStats(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        $loggedID = Auth::user()->id;
+        $doctor = Doctor::where('user_id', $loggedID)->first();
 
-            foreach ($messages as $message) {
-                $receivedDate = $message->created_at->format('Y-m-d');
-                if (!isset($listMessages[$receivedDate])) {
-                    $listMessages[$receivedDate] = 0;
-                }
-                $listMessages[$receivedDate]++;
+        $listMessages = [];
+
+        $messages = $doctor->messages()->whereBetween('created_at', [$start_date, $end_date])->get();
+
+        foreach ($messages as $message) {
+            $receivedDate = $message->created_at->format('Y-m-d');
+            if (!isset($listMessages[$receivedDate])) {
+                $listMessages[$receivedDate] = 0;
             }
-
-
-
-
-            return response()->json([
-                'statsMessages' => $listMessages
-            ], 200);
-
+            $listMessages[$receivedDate]++;
         }
 
-        public function reviewsStats(Request $request) {
-            $start_date = $request->start_date;
-            $end_date = $request->end_date;
-            $loggedID = Auth::user()->id;
-            $doctor = Doctor::where('user_id', $loggedID)->first();
 
-            $listReviews = [];
 
-            $reviews = $doctor->reviews()->whereBetween('created_at', [$start_date, $end_date])->get();
 
-            foreach ($reviews as $review) {
-                $receivedDate = $review->created_at->format('Y-m-d');
-                if (!isset($listReviews[$receivedDate])) {
-                    $listReviews[$receivedDate] = 0;
-                }
-                $listReviews[$receivedDate]++;
+        return response()->json([
+            'statsMessages' => $listMessages
+        ], 200);
+    }
+
+    public function reviewsStats(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        $loggedID = Auth::user()->id;
+        $doctor = Doctor::where('user_id', $loggedID)->first();
+        $type = $request->type;
+
+
+        $listReviews = [];
+
+        $reviews = $doctor->reviews()->whereBetween('created_at', [$start_date, $end_date])->get();
+
+        foreach ($reviews as $review) {
+            $receivedDate = $review->created_at;
+
+            if (empty($type)) {
+                return response()->json([
+                   "error" => 'Seleziona giorno, settimana, mese o anno'
+                ], 200);
             }
 
-            return response()->json([
-                'statsReviews' => $listReviews
-            ], 200);
+            else if ($type === 'day') {
+                $receivedDate = $receivedDate->format('Y-m-d');
+            } else if ($type === 'week') {
+                $receivedDate = $receivedDate->format('Y-W');
+            } else if ($type === 'month') {
+                $receivedDate = $receivedDate->format('Y-m');
+            } else if ($type === 'year') {
+                $receivedDate = $receivedDate->format('Y');
+            }
+
+            $rating = $review->rating;
+
+            if (!isset($listReviews[$receivedDate])) {
+                $listReviews[$receivedDate] = [];
+            }
+
+            if (!isset($listReviews[$receivedDate][$rating])) {
+                $listReviews[$receivedDate][$rating] = 0;
+            }
+
+            $listReviews[$receivedDate][$rating]++;
         }
 
-}
+        return response()->json([
+            'statsReviews' => $listReviews
+        ], 200);
+    }}
