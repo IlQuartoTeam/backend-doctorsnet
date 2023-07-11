@@ -83,7 +83,7 @@ class AuthController extends Controller
     {
         $userID = $request->user()->id;
         $loggedDoctor = Doctor::with(['reviews', 'specializations', 'subscriptions' => function ($query) {
-            $query->where('end_date', '>', Carbon::now());}, 'messages', 'experiences'])->where('user_id', $userID)->first();
+            $query->where('end_date', '>', Carbon::now());}, 'messages', 'experiences'])->leftjoin('doctor_subscription', 'doctor_subscription.doctor_id', '=', 'doctors.id')->select('doctors.*', 'doctor_subscription.end_date')->where('user_id', $userID)->first();
 
         if ($loggedDoctor->subscriptions->count() != 0) {
 
