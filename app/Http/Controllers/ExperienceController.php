@@ -19,7 +19,7 @@ class ExperienceController extends Controller
         $work = Experience::where('doctor_id', $doctor->id)->where('type', 'work')
             ->orderBy('start_date', 'desc')->get();
 
-        $education = Experience::where('doctor_id', $doctor->id)->where('type', 'work')
+        $education = Experience::where('doctor_id', $doctor->id)->where('type', 'education')
             ->orderBy('start_date', 'desc')->get();
 
         return response()->json(
