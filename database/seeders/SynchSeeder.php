@@ -23,7 +23,7 @@ class SynchSeeder extends Seeder
                 $randID = rand(1, 3);
             $subscription = Subscription::where('id', $randID)->first();
             //   dd($subscription->days_duration);
-            $doctor->subscriptions()->attach($randID, ['end_date' => Carbon::now()->addDays($subscription->days_duration)]);
+            $doctor->subscriptions()->attach($randID, ['end_date' => Carbon::now()->addDays($subscription->days_duration)->addHours(2)]);
             }
         }}
 

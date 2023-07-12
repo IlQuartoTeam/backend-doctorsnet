@@ -53,7 +53,7 @@ class PaymentController extends Controller
             $sub = $request->subID;
             $subDetails = Subscription::where('id', $sub)->first();
 
-            $doctor->subscriptions()->attach($sub, ['end_date' => Carbon::now()->addDays($subDetails->days_duration)]);
+            $doctor->subscriptions()->attach($sub, ['end_date' => Carbon::now()->addDays($subDetails->days_duration)->addHours(2)]);
 
 
 
