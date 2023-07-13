@@ -12,13 +12,13 @@ $male10 = 'https://images.pexels.com/photos/8460157/pexels-photo-8460157.jpeg?au
 $female1 = "https://images.unsplash.com/photo-1579165466949-3180a3d056d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80";
 $female2 = "https://images.unsplash.com/photo-1632054224477-c9cb3aae1b7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8ZmVtYWxlLGRvY3Rvcnx8fHx8fDE2ODgzOTY2ODQ&ixlib=rb-4.0.3&q=80&w=1080";
 $female3 = "https://images.unsplash.com/photo-1634147070282-40cbdd54670a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8ZG9jdG9yfHx8fHx8MTY4ODM5NjY2Ng&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080";
-$female4 = "https://shorturl.at/lX157";
-$female5 = "https://shorturl.at/htvNR";
-$female6 = "https://shorturl.at/cdtCJ";
-$female7 = "https://shorturl.at/gruCK";
-$female8 = "https://shorturl.at/bgtI8";
-$female9 = "https://shorturl.at/svwG6";
-$female10 = "https://t.ly/fSizG";
+$female4 = "https://images.pexels.com/photos/3714743/pexels-photo-3714743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+$female5 = "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+$female6 = "https://images.pexels.com/photos/6749778/pexels-photo-6749778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+$female7 = "https://images.pexels.com/photos/12495583/pexels-photo-12495583.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+$female8 = "https://images.pexels.com/photos/3902881/pexels-photo-3902881.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+$female9 = "https://images.pexels.com/photos/5214995/pexels-photo-5214995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+$female10 = "https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 
 return [
     /**
