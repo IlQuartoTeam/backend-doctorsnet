@@ -368,7 +368,7 @@ return [
     ],
     [
         "phone" => "+39 333 2345678",
-        "profile_image_url" => 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F5b%2Fc1%2F89%2F5bc189ceb9d5a8fb7e90358c511c40a5--medicine-doctor-dr-mike.jpg&f=1&nofb=1&ipt=b982579c3a1cc04995c40f213809f62a3d94da5af338cbb7f9d1518858cb0739&ipo=images3',
+        "profile_image_url" => 'https://p0.piqsels.com/preview/338/322/358/men-medical-health-doctor.jpg',
         "address" => "Via Cavour, 20",
         "city" => "Roma",
         "lat" => 41.8970,
