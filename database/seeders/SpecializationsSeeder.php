@@ -38,7 +38,6 @@ class SpecializationsSeeder extends Seeder
     "Neurochirurgia",
     "Neurologia",
     "Oftalmologia",
-    "Oncologia medica",
     "Oncologia",
     "Ortopedia",
     "Ginecologia",
